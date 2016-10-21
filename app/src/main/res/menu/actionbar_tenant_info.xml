@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:Niche="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:icon="@drawable/ic_action_edit"
+        Niche:showAsAction="ifRoom"
+        android:id="@+id/editPersonalInfo"
+        android:title="@string/edit_button"
+        />
+
+    <item
+        android:icon="@drawable/ic_action_save"
+        Niche:showAsAction="ifRoom"
+        android:id="@+id/savePersonalInfo"
+        android:title="@string/save_button"
+        />
+
+</menu>
