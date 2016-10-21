@@ -39,7 +39,7 @@ public class TenantDashboardActivity extends AppCompatActivity {
         btnTenantInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goPersonalInfo = new Intent(TenantDashboardActivity.this, TenantPersonalInfoActivity.class);
+                Intent goPersonalInfo = new Intent(TenantDashboardActivity.this, TenantProfileActivity.class);
                 TenantDashboardActivity.this.startActivity(goPersonalInfo);
             }
         });

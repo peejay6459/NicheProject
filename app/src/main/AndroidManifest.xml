@@ -29,7 +29,7 @@
         <activity android:name=".TenantDashboardActivity">
 
         </activity>
-        <activity android:name=".TenantPersonalInfoActivity">
+        <activity android:name=".TenantProfileActivity">
 
         </activity>
         <activity android:name=".LandlordDashboardActivity">

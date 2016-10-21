@@ -18,7 +18,7 @@ import android.widget.Toast;
  *      It takes data from user input then send the data
  *      into the middle tier class
  */
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity implements Settings {
     TextView txtRegUsername;
     TextView txtRegEmail;
     TextView txtRegPassword;
@@ -27,7 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
     CheckBox cbPrivacyPolicy;
     Button btnRegister;
     Spinner spinUserType;
-    private String urlAddress = "http://kappatid.co.nf/insertAccountDetails.php";
+    //private String urlAddress = "http://kappatid.co.nf/insertAccountDetails.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +92,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 String email = txtRegEmail.getText().toString();
                                 String userType = String.valueOf(spinUserType.getSelectedItem());
                                 InsertAccount ic = new InsertAccount(getApplicationContext(), RegisterActivity.this, username, password, email, userType);
-                                ic.execute(urlAddress);
+                                ic.execute(Settings.URL_ADDRESS_INSERT_ACCOUNT);
                                 Intent goMainActivity = new Intent(RegisterActivity.this, MainActivity.class);
                                 RegisterActivity.this.startActivity(goMainActivity);
                                 Toast.makeText(RegisterActivity.this, "Inserted Successfully", Toast.LENGTH_SHORT).show();

@@ -67,7 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/spinUserType"
-            android:entries="@array/category1"/>
+            android:entries="@array/userType_category1"/>
 
         <CheckBox
             android:text="I Accept Terms of Services"
