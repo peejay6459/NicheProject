@@ -9,5 +9,6 @@
         <item>Property Manager</item>
         <item>Tenant</item>
         <item>Landlord</item>
+        <item>Sub-tenant</item>
     </string-array>
 </resources>
