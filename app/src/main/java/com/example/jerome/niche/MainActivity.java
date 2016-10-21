@@ -15,9 +15,9 @@ import android.widget.Toast;
  *       It serves as the Login Page of the application
  *
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Settings{
     // @urlAddress to store the address of the php file
-    private String urlAddress = "http://kappatid.co.nf/getAccountDetails.php";
+    //private String urlAddress = "http://kappatid.co.nf/getAccountDetails.php";
     // @txtUsername to store the value of username
     private TextView txtUsername;
     // @txtUsername to store the value of password
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Username can't be blank", Toast.LENGTH_SHORT).show();
                 }else {
                     ValidateAccount vc = new ValidateAccount(getApplicationContext(), MainActivity.this, username, password);
-                    vc.execute(urlAddress);
+                    vc.execute(Settings.URL_ADDRESS_VALIDATE_ACCOUNT);
                 }
 
 

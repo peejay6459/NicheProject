@@ -5,9 +5,15 @@
     <string name="edit_button">Edit</string>
     <string name="save_button">Save</string>
 
-    <string-array name="category1">
+    <string-array name="userType_category1">
         <item>Property Manager</item>
         <item>Tenant</item>
         <item>Landlord</item>
+    </string-array>
+
+    <string-array name="gender_category">
+        <item>Gender</item>
+        <item>Male</item>
+        <item>Female</item>
     </string-array>
 </resources>

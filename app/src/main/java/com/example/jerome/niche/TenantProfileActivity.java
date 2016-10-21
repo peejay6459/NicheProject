@@ -8,11 +8,11 @@ import android.view.Menu;
  * Created by Jerome on 21/10/2016.
  */
 
-public class TenantPersonalInfoActivity extends AppCompatActivity {
+public class TenantProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tenant_personal_info);
+        setContentView(R.layout.activity_tenant_profile);
         setTitle("Personal Information");
 
     }
