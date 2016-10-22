@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.jerome.niche.activities.LandlordDashboardActivity;
 import com.example.jerome.niche.activities.MainActivity;
+import com.example.jerome.niche.activities.PropertyManagerDashboardActivity;
 import com.example.jerome.niche.activities.RegisterActivity;
 import com.example.jerome.niche.activities.TenantDashboardActivity;
 
@@ -89,11 +90,15 @@ public class ValidateAccount extends AsyncTask<String, String, Void> {
                 Intent goTenantDashboardActivity = new Intent(main, TenantDashboardActivity.class);
                 main.startActivity(goTenantDashboardActivity);
                 Toast.makeText(context, "Welcome to DashBoard", Toast.LENGTH_SHORT).show();
-            }/*else if(accountDetails[2].equals("Landlord")){
+            }else if(accountDetails[2].equals("Landlord")){
                 Intent goLandlordDashboardActivity = new Intent(main, LandlordDashboardActivity.class);
                 main.startActivity(goLandlordDashboardActivity);
                 Toast.makeText(context, "Welcome to DashBoard", Toast.LENGTH_SHORT).show();
-            }*/else{
+            }else if(accountDetails[2].equals("Property Manager")){
+                Intent goPropertyManagerDashboardActivity = new Intent(main, PropertyManagerDashboardActivity.class);
+                main.startActivity(goPropertyManagerDashboardActivity);
+                Toast.makeText(context, "Welcome to DashBoard", Toast.LENGTH_SHORT).show();
+            }else{
                 Toast.makeText(context, "Currently unavailable", Toast.LENGTH_SHORT).show();
             }
         }else if((accountDetails[0].equals("null") && (accountDetails[1].equals("null")))){
