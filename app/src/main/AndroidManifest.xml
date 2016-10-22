@@ -11,41 +11,31 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".activities.MainActivity">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity android:name=".activities.ManageRoomsActivity" />
+        <activity android:name=".activities.RegisterActivity" />
+        <activity android:name=".activities.TenantDashboardActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.TenantProfileActivity" />
+        <activity android:name=".activities.TenantRegisterActivity" />
 
-        <activity android:name=".activities.ManageRoomsActivity">
+        <!-- Landlord Parent Activity -->
+        <activity android:name=".activities.LandlordDashboardActivity" />
 
-        </activity>
-        <activity android:name=".activities.RegisterActivity">
-
-        </activity>
-        <activity android:name=".activities.TenantDashboardActivity">
-
-        </activity>
-
-        <activity android:name=".activities.TenantProfileActivity">
-
-        </activity>
-        <activity android:name=".activities.TenantRegisterActivity">
-
-        </activity>
-        <activity android:name=".activities.PropertyManagerDashboardActivity">
-
-        </activity>
-
-        <!--Landlord Parent Activity-->
-        <activity android:name=".activities.LandlordDashboardActivity">
-
-        </activity>
-
-        <!--Landlord Child Activities-->
+        <!-- Landlord Child Activities -->
         <activity
             android:name=".activities.LandlordPersonalInformationActivity"
             android:parentActivityName=".activities.LandlordDashboardActivity">
@@ -53,7 +43,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.LandlordDashboardActivity" />
         </activity>
-
         <activity
             android:name=".activities.LandlordManagePropertyManagersActivity"
             android:parentActivityName=".activities.LandlordDashboardActivity">
@@ -61,16 +50,40 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.LandlordDashboardActivity" />
         </activity>
-
-        <activity android:name=".activities.LandlordManagePropertiesActivity"
+        <activity
+            android:name=".activities.LandlordManagePropertiesActivity"
             android:parentActivityName=".activities.LandlordDashboardActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.LandlordDashboardActivity" />
         </activity>
 
+        <!-- PropertyManager Dashboard Parent Activity -->
+        <activity android:name=".activities.PropertyManagerDashboardActivity">
 
+        </activity>
 
+        <!-- PropertyManager Personal Information Child Activity -->
+        <activity
+            android:name=".activities.PropertyManagerPersonalInformationActivity"
+            android:parentActivityName=".activities.PropertyManagerDashboardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.PropertyManagerDashboardActivity" />
+        </activity>
+        <activity
+            android:name=".activities.PropertyManagerManageRoomsActivity"
+            android:parentActivityName=".activities.PropertyManagerDashboardActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.PropertyManagerDashboardActivity" />
+        </activity>
+        <activity
+            android:name=".activities.PropertyManagerReviewTenantsActivity"
+            android:parentActivityName=".activities.PropertyManagerDashboardActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.PropertyManagerDashboardActivity" />
+        </activity>
     </application>
-
 </manifest>

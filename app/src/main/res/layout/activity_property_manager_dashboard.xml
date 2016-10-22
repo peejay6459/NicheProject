@@ -63,21 +63,24 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:id="@+id/btnPropertyManagerPersonalInformation" />
+                            android:id="@+id/btnPropertyManagerPersonalInformation"
+                            android:onClick="btnPropertyManagerPersonalInformation" />
 
                         <Button
                             android:text="Manage Rooms"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:id="@+id/btnPropertyManagerManageRooms" />
+                            android:id="@+id/btnPropertyManagerManageRooms"
+                            android:onClick="btnPropertyManagerManageRooms" />
 
                         <Button
                             android:text="Review Tenants"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:id="@+id/btnPropertyManagerReviewTenants" />
+                            android:id="@+id/btnPropertyManagerReviewTenants"
+                            android:onClick="btnPropertyManagerReviewTenants" />
                     </LinearLayout>
 
                     <LinearLayout
