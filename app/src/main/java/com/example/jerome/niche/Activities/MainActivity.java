@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity implements Settings {
 
                 String username = txtUsername.getText().toString();
                 String password = txtPassword.getText().toString();
-                if(username.isEmpty()){
-                    Toast.makeText(MainActivity.this, "Username can't be blank", Toast.LENGTH_SHORT).show();
+                if((username.isEmpty()) || (password.isEmpty())){
+                    Toast.makeText(MainActivity.this, "Username/Password can't be blank", Toast.LENGTH_SHORT).show();
                 }else {
                     ValidateAccount vc = new ValidateAccount(getApplicationContext(), MainActivity.this, username, password);
                     vc.execute(Settings.URL_ADDRESS_VALIDATE_ACCOUNT);
