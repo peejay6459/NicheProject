@@ -11,7 +11,6 @@ public class LandlordPersonalInformationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landlord_personal_information);
-
-        //getSupportActionBar().setHomeButtonEnabled(true);
+        setTitle("Personal Information");
     }
 }

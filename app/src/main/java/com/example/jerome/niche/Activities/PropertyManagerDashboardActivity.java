@@ -18,6 +18,9 @@ import com.example.jerome.niche.R;
 
 public class PropertyManagerDashboardActivity extends AppCompatActivity {
     Button btnPropertyManagerInfo;
+    Button btnPropertyManagerManageRooms;
+    Button btnPropertyManagerReviewTenants;
+
     TabHost th;
 
     @Override
@@ -27,6 +30,8 @@ public class PropertyManagerDashboardActivity extends AppCompatActivity {
         setTitle("Property Manager Dashboard");
 
         btnPropertyManagerInfo = (Button) findViewById(R.id.btnPropertyManagerPersonalInformation);
+        btnPropertyManagerManageRooms = (Button) findViewById(R.id.btnPropertyManagerManageRooms);
+        btnPropertyManagerReviewTenants = (Button) findViewById(R.id.btnPropertyManagerReviewTenants);
 
         th = (TabHost) findViewById(R.id.tvTabHost);
         th.setup();
@@ -38,8 +43,32 @@ public class PropertyManagerDashboardActivity extends AppCompatActivity {
         specs.setContent(R.id.tab2);
         specs.setIndicator("News Feed");
         th.addTab(specs);
-    }
 
+
+        btnPropertyManagerInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goPersonalInfo = new Intent(PropertyManagerDashboardActivity.this, PropertyManagerPersonalInformationActivity.class);
+                PropertyManagerDashboardActivity.this.startActivity(goPersonalInfo);
+            }
+        });
+
+        btnPropertyManagerManageRooms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goManageRooms = new Intent(PropertyManagerDashboardActivity.this, PropertyManagerManageRoomsActivity.class);
+                PropertyManagerDashboardActivity.this.startActivity(goManageRooms);
+            }
+        });
+
+        btnPropertyManagerReviewTenants.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goReviewTenants = new Intent(PropertyManagerDashboardActivity.this, PropertyManagerReviewTenantsActivity.class);
+                PropertyManagerDashboardActivity.this.startActivity(goReviewTenants);
+            }
+        });
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         this.getMenuInflater().inflate(R.menu.actionbar_signout, menu);
@@ -56,18 +85,4 @@ public class PropertyManagerDashboardActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-    public void btnPropertyManagerPersonalInformation(View view)
-    {
-        this.startActivity(new Intent(this, PropertyManagerPersonalInformationActivity.class));
-    }
-    public void btnPropertyManagerManageRooms(View view)
-    {
-        this.startActivity(new Intent(this, PropertyManagerManageRoomsActivity.class));
-    }
-    public void btnPropertyManagerReviewTenants(View view)
-    {
-        this.startActivity(new Intent(this, PropertyManagerReviewTenantsActivity.class));
-    }
-
 }

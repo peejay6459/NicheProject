@@ -12,12 +12,16 @@ import android.widget.Toast;
 
 import com.example.jerome.niche.R;
 
+import static android.R.attr.onClick;
+
 /**
  * Created by philip on 10/21/2016.
  */
 
 public class LandlordDashboardActivity extends AppCompatActivity {
     Button btnLandlordInfo;
+    Button btnLandlordManagePropertyManagers;
+    Button btnLandlordManageProperties;
     TabHost th;
 
     @Override
@@ -28,6 +32,8 @@ public class LandlordDashboardActivity extends AppCompatActivity {
         // To enable Action bar's back button
         // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btnLandlordInfo = (Button) findViewById(R.id.btnLandlordPersonalInformation);
+        btnLandlordManagePropertyManagers = (Button) findViewById(R.id.btnLandlordManagePropertyManagers);
+        btnLandlordManageProperties = (Button) findViewById(R.id.btnLandlordManageProperties);
 
         th = (TabHost) findViewById(R.id.tvTabHost);
         th.setup();
@@ -39,6 +45,33 @@ public class LandlordDashboardActivity extends AppCompatActivity {
         specs.setContent(R.id.tab2);
         specs.setIndicator("News Feed");
         th.addTab(specs);
+
+
+        btnLandlordInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goPersonalInfo = new Intent(LandlordDashboardActivity.this, LandlordPersonalInformationActivity.class);
+                LandlordDashboardActivity.this.startActivity(goPersonalInfo);
+            }
+        });
+
+        btnLandlordManagePropertyManagers.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 Intent goManagePropertyManagers = new Intent(LandlordDashboardActivity.this, LandlordManagePropertyManagersActivity.class);
+                 LandlordDashboardActivity.this.startActivity(goManagePropertyManagers);
+             }
+         }
+        );
+
+        btnLandlordManageProperties.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 Intent goManageProperties = new Intent(LandlordDashboardActivity.this, LandlordManagePropertiesActivity.class);
+                 LandlordDashboardActivity.this.startActivity(goManageProperties);
+             }
+         }
+        );
     }
 
     @Override
@@ -57,19 +90,5 @@ public class LandlordDashboardActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-    public void btnLandlordPersonalInformation(View view)
-    {
-        this.startActivity(new Intent(this, LandlordPersonalInformationActivity.class));
-    }
-    public void btnLandlordManagePropertyManagers(View view)
-    {
-        this.startActivity(new Intent(this, LandlordPersonalInformationActivity.class));
-    }
-    public void btnLandlordManageProperties(View view)
-    {
-        this.startActivity(new Intent(this, LandlordPersonalInformationActivity.class));
-    }
-
 
 }

@@ -21,6 +21,9 @@ import com.example.jerome.niche.R;
 
 public class TenantDashboardActivity extends AppCompatActivity {
     Button btnTenantInfo;
+    Button btnTenantRoomsOffered;
+    Button btnTenantPaymentHistory;
+
     TabHost th;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,8 @@ public class TenantDashboardActivity extends AppCompatActivity {
         setTitle("Tenant Dashboard");
 
         btnTenantInfo = (Button) findViewById(R.id.btnTenantPersonalInformation);
+        btnTenantRoomsOffered = (Button) findViewById(R.id.btnTenantRoomsOffered);
+        btnTenantPaymentHistory = (Button) findViewById(R.id.btnTenantPaymentHistory);
 
         th = (TabHost) findViewById(R.id.tvTabHost);
         th.setup();
@@ -46,6 +51,22 @@ public class TenantDashboardActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent goPersonalInfo = new Intent(TenantDashboardActivity.this, TenantProfileActivity.class);
                 TenantDashboardActivity.this.startActivity(goPersonalInfo);
+            }
+        });
+
+        btnTenantRoomsOffered.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goRoomsOffered= new Intent(TenantDashboardActivity.this, TenantRoomsOfferedActivity.class);
+                TenantDashboardActivity.this.startActivity(goRoomsOffered);
+            }
+        });
+
+        btnTenantPaymentHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goPaymentHistory = new Intent(TenantDashboardActivity.this, TenantPaymentHistoryActivity.class);
+                TenantDashboardActivity.this.startActivity(goPaymentHistory);
             }
         });
     }

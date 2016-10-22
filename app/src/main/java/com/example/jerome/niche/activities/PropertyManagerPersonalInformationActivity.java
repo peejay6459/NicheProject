@@ -11,5 +11,6 @@ public class PropertyManagerPersonalInformationActivity extends AppCompatActivit
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_property_manager_personal_information);
+        setTitle("Personal Information");
     }
 }
