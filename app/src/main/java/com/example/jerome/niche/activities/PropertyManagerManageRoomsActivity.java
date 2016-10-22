@@ -11,5 +11,6 @@ public class PropertyManagerManageRoomsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_property_manager_manage_rooms);
+        setTitle("Manage Rooms");
     }
 }

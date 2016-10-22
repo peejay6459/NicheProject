@@ -11,5 +11,6 @@ public class LandlordManagePropertyManagersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landlord_manage_property_managers);
+        setTitle("Manage Property Managers");
     }
 }

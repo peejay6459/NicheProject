@@ -5,12 +5,13 @@ import android.os.Bundle;
 
 import com.example.jerome.niche.R;
 
-public class PropertyManagerReviewTenantsActivity extends AppCompatActivity {
+public class TenantRoomsOfferedActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_property_manager_review_tenants);
-        setTitle("Review Tenants");
+        setContentView(R.layout.activity_tenant_rooms_offered);
+        setTitle("Rooms Offered");
+
     }
 }

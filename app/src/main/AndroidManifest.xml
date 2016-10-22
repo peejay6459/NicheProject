@@ -11,15 +11,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.MainActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+        <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.ManageRoomsActivity" />
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.TenantDashboardActivity">
@@ -29,8 +21,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.TenantProfileActivity" />
+        <activity
+            android:name=".activities.TenantProfileActivity"
+            android:parentActivityName=".activities.TenantDashboardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.TenantDashboardActivity" />
+        </activity>
         <activity android:name=".activities.TenantRegisterActivity" />
+        <activity
+            android:name=".activities.TenantRoomsOfferedActivity"
+            android:parentActivityName=".activities.TenantDashboardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.TenantDashboardActivity" />
+        </activity>
+        <activity
+            android:name=".activities.TenantPaymentHistoryActivity"
+            android:parentActivityName=".activities.TenantDashboardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.TenantDashboardActivity" />
+        </activity>
 
         <!-- Landlord Parent Activity -->
         <activity android:name=".activities.LandlordDashboardActivity" />
@@ -59,9 +71,7 @@
         </activity>
 
         <!-- PropertyManager Dashboard Parent Activity -->
-        <activity android:name=".activities.PropertyManagerDashboardActivity">
-
-        </activity>
+        <activity android:name=".activities.PropertyManagerDashboardActivity" />
 
         <!-- PropertyManager Personal Information Child Activity -->
         <activity
@@ -73,17 +83,19 @@
         </activity>
         <activity
             android:name=".activities.PropertyManagerManageRoomsActivity"
-            android:parentActivityName=".activities.PropertyManagerDashboardActivity" >
+            android:parentActivityName=".activities.PropertyManagerDashboardActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.PropertyManagerDashboardActivity" />
         </activity>
         <activity
             android:name=".activities.PropertyManagerReviewTenantsActivity"
-            android:parentActivityName=".activities.PropertyManagerDashboardActivity" >
+            android:parentActivityName=".activities.PropertyManagerDashboardActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.PropertyManagerDashboardActivity" />
         </activity>
+
     </application>
+
 </manifest>
