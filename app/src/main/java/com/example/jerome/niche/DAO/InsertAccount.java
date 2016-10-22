@@ -1,8 +1,11 @@
-package com.example.jerome.niche;
+package com.example.jerome.niche.DAO;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.example.jerome.niche.Activities.RegisterActivity;
+
 import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLConnection;

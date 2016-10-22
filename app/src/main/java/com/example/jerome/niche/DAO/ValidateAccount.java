@@ -1,4 +1,4 @@
-package com.example.jerome.niche;
+package com.example.jerome.niche.DAO;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -8,6 +8,10 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.example.jerome.niche.Activities.MainActivity;
+import com.example.jerome.niche.Activities.RegisterActivity;
+import com.example.jerome.niche.Activities.TenantDashboardActivity;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

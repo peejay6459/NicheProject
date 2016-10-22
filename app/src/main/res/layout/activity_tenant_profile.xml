@@ -60,12 +60,12 @@
                     android:textStyle="normal|bold" />
 
                 <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPersonName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
                     android:ems="10"
-                        android:id="@+id/editText"
-                        android:textColor="@android:color/darker_gray"
+                    android:id="@+id/editName"
+                    android:textColor="@android:color/darker_gray"
                     android:layout_weight="1" />
             </LinearLayout>
 
@@ -91,41 +91,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:id="@+id/rdioGrpGender">
 
                     <RadioButton
                         android:text="Male"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/radioButton2"
+                        android:id="@+id/rdioMale"
                         android:layout_weight="1" />
 
                     <RadioButton
                         android:text="Female"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/radioButton"
+                        android:id="@+id/rdioFemale"
                         android:layout_weight="1" />
                 </RadioGroup>
             </LinearLayout>
 
-            <TextView
-                android:text="Address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView14"
-                android:textSize="18sp"
-                android:layout_margin="10dp"
-                android:textStyle="normal|bold" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPostalAddress"
-                android:ems="10"
-                android:id="@+id/editText9"
-                android:layout_weight="0.54"
-                android:textColor="@android:color/darker_gray" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -148,8 +132,8 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:ems="10"
-                    android:id="@+id/editText10"
-                    android:layout_weight="1"
+                    android:id="@+id/editDob"
+                    android:layout_weight="2.70"
                     android:textColor="@android:color/darker_gray" />
             </LinearLayout>
 
@@ -174,7 +158,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:ems="10"
-                    android:id="@+id/editText12"
+                    android:id="@+id/editPhone"
                     android:layout_weight="1"
                     android:textColor="@android:color/darker_gray" />
             </LinearLayout>
@@ -200,10 +184,141 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:ems="10"
-                    android:id="@+id/editText7"
+                    android:id="@+id/editMobile"
                     android:layout_weight="1"
                     android:textColor="@android:color/darker_gray" />
             </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:text="Address 1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView23"
+                    android:layout_weight="1"
+                    android:textSize="18sp"
+                    android:textStyle="normal|bold" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPostalAddress"
+                    android:ems="10"
+                    android:id="@+id/editAdd1"
+                    android:layout_weight="2.99"
+                    android:textColor="@android:color/darker_gray" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:text="Address 2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView24"
+                    android:layout_weight="1"
+                    android:textSize="18sp"
+                    android:textStyle="normal|bold" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPostalAddress"
+                    android:ems="10"
+                    android:id="@+id/editAdd2"
+                    android:layout_weight="2.58"
+                    android:textColor="@android:color/darker_gray" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:text="Suburb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView25"
+                    android:layout_weight="1"
+                    android:textSize="18sp"
+                    android:textStyle="normal|bold" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPostalAddress"
+                    android:ems="10"
+                    android:id="@+id/editSuburb"
+                    android:layout_weight="4.13"
+                    android:textColor="@android:color/darker_gray" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:text="City"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView26"
+                    android:layout_weight="1"
+                    android:textSize="18sp"
+                    android:textStyle="normal|bold" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPostalAddress"
+                    android:ems="10"
+                    android:id="@+id/editCity"
+                    android:layout_weight="4.86"
+                    android:textColor="@android:color/darker_gray" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:text="Country"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView27"
+                    android:layout_weight="1"
+                    android:textSize="18sp"
+                    android:textStyle="normal|bold" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPostalAddress"
+                    android:ems="10"
+                    android:id="@+id/editCountry"
+                    android:layout_weight="3.28"
+                    android:textColor="@android:color/darker_gray" />
+            </LinearLayout>
+
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -225,9 +340,9 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:ems="10"
-                    android:id="@+id/editText13"
+                    android:id="@+id/editPassport"
                     android:textColor="@android:color/darker_gray"
-                    android:layout_weight="1" />
+                    android:layout_weight="1.64" />
             </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"
@@ -250,9 +365,9 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:ems="10"
-                    android:id="@+id/editText14"
+                    android:id="@+id/editIdNum"
                     android:textColor="@android:color/darker_gray"
-                    android:layout_weight="1" />
+                    android:layout_weight="2.97" />
             </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"
@@ -275,7 +390,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:ems="10"
-                    android:id="@+id/editText8"
+                    android:id="@+id/editPrevCountry"
                     android:textColor="@android:color/darker_gray"
                     android:layout_weight="1" />
             </LinearLayout>
@@ -319,7 +434,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:ems="10"
-                    android:id="@+id/editText11"
+                    android:id="@+id/editRelName"
                     android:textColor="@android:color/darker_gray"
                     android:layout_weight="1" />
             </LinearLayout>
@@ -346,7 +461,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:ems="10"
-                    android:id="@+id/editText15"
+                    android:id="@+id/editRelRelationship"
                     android:textColor="@android:color/darker_gray"
                     android:layout_weight="1" />
             </LinearLayout>
@@ -373,7 +488,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:ems="10"
-                    android:id="@+id/editText16"
+                    android:id="@+id/editRelAdd"
                     android:textColor="@android:color/darker_gray"
                     android:layout_weight="1" />
             </LinearLayout>
@@ -400,7 +515,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:ems="10"
-                    android:id="@+id/editText17"
+                    android:id="@+id/editRelPhoneMobile"
                     android:textColor="@android:color/darker_gray"
                     android:layout_weight="1" />
             </LinearLayout>

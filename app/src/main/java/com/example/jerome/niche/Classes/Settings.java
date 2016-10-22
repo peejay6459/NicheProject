@@ -1,4 +1,4 @@
-package com.example.jerome.niche;
+package com.example.jerome.niche.Classes;
 
 
 /**

@@ -1,8 +1,10 @@
-package com.example.jerome.niche;
+package com.example.jerome.niche.Classes;
 
 import android.text.InputType;
 import android.view.View;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 /**
  * Created by Jerome on 20/10/2016.
@@ -126,5 +128,18 @@ public class FieldHelper extends Helpers {
                 }
             }
         });
+    }
+
+    @Override
+    public void setEditableFalse(ArrayList<TextView> fieldName) {
+        for(TextView fields : fieldName){
+            fields.setEnabled(false);
+        }
+    }
+    @Override
+    public void setEditableTrue(ArrayList<TextView> fieldName) {
+        for(TextView fields : fieldName){
+            fields.setEnabled(true);
+        }
     }
 }

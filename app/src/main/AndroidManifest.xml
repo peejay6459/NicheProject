@@ -10,29 +10,29 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ManageRoomsActivity">
+        <activity android:name=".Activities.ManageRoomsActivity">
 
         </activity>
-        <activity android:name=".TenantRegisterActivity">
+        <activity android:name=".Activities.TenantRegisterActivity">
 
         </activity>
-        <activity android:name=".RegisterActivity">
+        <activity android:name=".Activities.RegisterActivity">
 
         </activity>
-        <activity android:name=".TenantDashboardActivity">
+        <activity android:name=".Activities.TenantDashboardActivity">
 
         </activity>
-        <activity android:name=".TenantProfileActivity">
+        <activity android:name=".Activities.TenantProfileActivity">
 
         </activity>
-        <activity android:name=".LandlordDashboardActivity">
+        <activity android:name=".Activities.LandlordDashboardActivity">
 
         </activity>
     </application>

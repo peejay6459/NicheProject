@@ -1,4 +1,4 @@
-package com.example.jerome.niche;
+package com.example.jerome.niche.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,6 +6,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.jerome.niche.DAO.ValidateAccount;
+import com.example.jerome.niche.Classes.FieldHelper;
+import com.example.jerome.niche.R;
+import com.example.jerome.niche.Classes.Settings;
 
 /**
  * @author: kappatid LLC
@@ -15,7 +20,7 @@ import android.widget.Toast;
  *       It serves as the Login Page of the application
  *
  */
-public class MainActivity extends AppCompatActivity implements Settings{
+public class MainActivity extends AppCompatActivity implements Settings {
     // @urlAddress to store the address of the php file
     //private String urlAddress = "http://kappatid.co.nf/getAccountDetails.php";
     // @txtUsername to store the value of username
