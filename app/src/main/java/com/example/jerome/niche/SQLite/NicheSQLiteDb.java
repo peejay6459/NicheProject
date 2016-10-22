@@ -1,4 +1,4 @@
-package com.example.jerome.niche.SQLite;
+package com.example.jerome.niche.sqlite;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,8 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
-import com.example.jerome.niche.Classes.Users;
 
 /**
  * Created by Jerome on 9/10/2016.

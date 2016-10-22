@@ -1,4 +1,4 @@
-package com.example.jerome.niche.Activities;
+package com.example.jerome.niche.activities;
 
 import android.content.Intent;
 import android.os.Bundle;

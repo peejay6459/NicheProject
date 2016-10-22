@@ -6,16 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import com.example.jerome.niche.R;
 
 /**
- * Created by Jeffrey on 15/10/2016.
+ * Created by philip on 10/22/2016.
  */
 
-public class TenantRegisterActivity extends AppCompatActivity {
+public class PropertyManagerDashboardActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tenant_register);
-
-        setTitle("Add Tenant");
-
+        setContentView(R.layout.activity_property_manager_dashboard);
+        setTitle("Property Manager Dashboard");
     }
 }

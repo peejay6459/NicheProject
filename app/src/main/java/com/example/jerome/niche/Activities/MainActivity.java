@@ -1,4 +1,4 @@
-package com.example.jerome.niche.Activities;
+package com.example.jerome.niche.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,10 +7,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.jerome.niche.DAO.ValidateAccount;
-import com.example.jerome.niche.Classes.FieldHelper;
+import com.example.jerome.niche.dao.ValidateAccount;
+import com.example.jerome.niche.classes.FieldHelper;
 import com.example.jerome.niche.R;
-import com.example.jerome.niche.Classes.Settings;
+import com.example.jerome.niche.classes.Settings;
 
 /**
  * @author: kappatid LLC

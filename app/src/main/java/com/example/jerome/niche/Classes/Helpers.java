@@ -1,8 +1,6 @@
-package com.example.jerome.niche.Classes;
+package com.example.jerome.niche.classes;
 
 import android.widget.TextView;
-
-import com.example.jerome.niche.Classes.Settings;
 
 import java.util.ArrayList;
 

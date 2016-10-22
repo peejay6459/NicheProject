@@ -1,4 +1,4 @@
-package com.example.jerome.niche.Classes;
+package com.example.jerome.niche.classes;
 
 import android.text.InputType;
 import android.view.View;

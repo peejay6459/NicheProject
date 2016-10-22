@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -16,10 +16,10 @@
             android:id="@+id/toolbar" />
 
         <TextView
-            android:text="Upcoming Payment Reminder: 07 December"
+            android:text="CONTENT TO BE DISCUSSED"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tvTenantToolbar"
+            android:id="@+id/tvPropertyManagerToolbar"
             android:textColor="@android:color/background_dark"
             android:textSize="18sp"
             android:gravity="center"
@@ -63,21 +63,21 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:id="@+id/btnTenantPersonalInformation" />
+                            android:id="@+id/btnPropertyManagerPersonalInformation" />
 
                         <Button
-                            android:text="Rooms Offered"
+                            android:text="Manage Rooms"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:id="@+id/btnTenantRoomsOffered" />
+                            android:id="@+id/btnPropertyManagerManageRooms" />
 
                         <Button
-                            android:text="Payment History"
+                            android:text="Review Tenants"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:id="@+id/btnTenantPaymentHistory" />
+                            android:id="@+id/btnPropertyManagerReviewTenants" />
                     </LinearLayout>
 
                     <LinearLayout

@@ -1,4 +1,4 @@
-package com.example.jerome.niche.Activities;
+package com.example.jerome.niche.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-import com.example.jerome.niche.Classes.FieldHelper;
+import com.example.jerome.niche.classes.FieldHelper;
 import com.example.jerome.niche.R;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.example.jerome.niche.Activities;
+package com.example.jerome.niche.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,7 +25,7 @@ public class TenantDashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tenant_dashboard);
         setTitle("Tenant Dashboard");
 
-        btnTenantInfo = (Button) findViewById(R.id.btnPersonalInformation);
+        btnTenantInfo = (Button) findViewById(R.id.btnTenantPersonalInformation);
 
         th = (TabHost) findViewById(R.id.tvTabHost);
         th.setup();

@@ -1,4 +1,4 @@
-package com.example.jerome.niche.Activities;
+package com.example.jerome.niche.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,10 +10,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.jerome.niche.DAO.InsertAccount;
-import com.example.jerome.niche.Classes.FieldHelper;
+import com.example.jerome.niche.dao.InsertAccount;
+import com.example.jerome.niche.classes.FieldHelper;
 import com.example.jerome.niche.R;
-import com.example.jerome.niche.Classes.Settings;
+import com.example.jerome.niche.classes.Settings;
 
 /**
  * @author: kappatid LLC
