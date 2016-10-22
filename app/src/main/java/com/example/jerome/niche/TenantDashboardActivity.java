@@ -23,7 +23,7 @@ public class TenantDashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tenant_dashboard);
         setTitle("Tenant Dashboard");
 
-        btnTenantInfo = (Button) findViewById(R.id.btnPersonalInformation);
+        btnTenantInfo = (Button) findViewById(R.id.btnTenantPersonalInformation);
 
         th = (TabHost) findViewById(R.id.tvTabHost);
         th.setup();
