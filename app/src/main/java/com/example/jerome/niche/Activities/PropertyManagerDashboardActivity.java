@@ -3,9 +3,12 @@ package com.example.jerome.niche.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TabHost;
+import android.widget.Toast;
 
 import com.example.jerome.niche.R;
 
@@ -35,6 +38,23 @@ public class PropertyManagerDashboardActivity extends AppCompatActivity {
         specs.setContent(R.id.tab2);
         specs.setIndicator("News Feed");
         th.addTab(specs);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.getMenuInflater().inflate(R.menu.actionbar_signout, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.signOut){
+            Intent goToLoginPage = new Intent(this, MainActivity.class);
+            this.startActivity(goToLoginPage);
+            Toast.makeText(this, "Logout Successfully", Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void btnPropertyManagerPersonalInformation(View view)
