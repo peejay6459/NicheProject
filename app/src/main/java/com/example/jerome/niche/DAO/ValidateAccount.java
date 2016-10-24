@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -14,6 +15,9 @@ import com.example.jerome.niche.activities.MainActivity;
 import com.example.jerome.niche.activities.PropertyManagerDashboardActivity;
 import com.example.jerome.niche.activities.RegisterActivity;
 import com.example.jerome.niche.activities.TenantDashboardActivity;
+import com.example.jerome.niche.activities.TenantProfileActivity;
+import com.example.jerome.niche.classes.NicheUser;
+import com.example.jerome.niche.classes.Settings;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -29,16 +33,14 @@ import java.net.URLEncoder;
 public class ValidateAccount extends AsyncTask<String, String, Void> {
     MainActivity main;
     Context context;
-    String username;
-    String password;
+    NicheUser nUser;
     ProgressDialog pd;
 
 
-    public ValidateAccount(Context context, MainActivity main, String username, String password){
+    public ValidateAccount(Context context, MainActivity main, NicheUser nUser){
         this.context = context;
         this.main = main;
-        this.username = username;
-        this.password = password;
+        this.nUser = nUser;
     }
 
 
@@ -57,9 +59,9 @@ public class ValidateAccount extends AsyncTask<String, String, Void> {
             URLConnection con = url.openConnection();
 
             String getUserName = URLEncoder.encode("username", "UTF-8");
-            getUserName += "=" + URLEncoder.encode(username, "UTF-8");
+            getUserName += "=" + URLEncoder.encode(nUser.getUsername(), "UTF-8");
 
-            Log.d("Username: ", username);
+            Log.d("Username: ", nUser.getUsername());
             con.setDoOutput(true);
             OutputStreamWriter os = new OutputStreamWriter(con.getOutputStream());
             os.write(getUserName);
@@ -72,36 +74,39 @@ public class ValidateAccount extends AsyncTask<String, String, Void> {
                 for (String acc : account) {
                     Log.d("Account: ", acc);
                     publishProgress(acc);
+
+                    final String[] accountDetails = acc.split("-");
+                    URL url1 = new URL(params[1]);
+                    URLConnection con1 = url1.openConnection();
+                    Log.d("URL", params[1]);
+                    String insertID = URLEncoder.encode("tenantID", "UTF-8");
+                    insertID += "=" + URLEncoder.encode(accountDetails[0], "UTF-8");
+                    Log.d("This is what I need", accountDetails[0]);
+
+                    con1.setDoOutput(true);
+                    os = new OutputStreamWriter(con1.getOutputStream());
+                    os.write(insertID);
+                    os.flush();
+                    con1.getInputStream();
                 }
             }
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return null;
     }
     @Override
     protected void onProgressUpdate(String... values) {
         final String[] accountDetails = values[0].split("-");
         Log.d("values[0]", values[0]);
-        Log.d("Username", accountDetails[0]);
-        Log.d("Password", accountDetails[1]);
-        if((accountDetails[0].equals(username)) && (accountDetails[1].equals(password))){
-            if(accountDetails[2].equals("Tenant")) {
-                Intent goTenantDashboardActivity = new Intent(main, TenantDashboardActivity.class);
-                main.startActivity(goTenantDashboardActivity);
-                Toast.makeText(context, "Welcome to DashBoard", Toast.LENGTH_SHORT).show();
-            }else if(accountDetails[2].equals("Landlord")){
-                Intent goLandlordDashboardActivity = new Intent(main, LandlordDashboardActivity.class);
-                main.startActivity(goLandlordDashboardActivity);
-                Toast.makeText(context, "Welcome to DashBoard", Toast.LENGTH_SHORT).show();
-            }else if(accountDetails[2].equals("Property Manager")){
-                Intent goPropertyManagerDashboardActivity = new Intent(main, PropertyManagerDashboardActivity.class);
-                main.startActivity(goPropertyManagerDashboardActivity);
-                Toast.makeText(context, "Welcome to DashBoard", Toast.LENGTH_SHORT).show();
-            }else{
-                Toast.makeText(context, "Currently unavailable", Toast.LENGTH_SHORT).show();
-            }
-        }else if((accountDetails[0].equals("null") && (accountDetails[1].equals("null")))){
+        Log.d("Username", accountDetails[1]);
+        Log.d("Password", accountDetails[2]);
+        if((accountDetails[1].equals(nUser.getUsername())) && (accountDetails[2].equals(nUser.getPassword()))){
+           showError(accountDetails);
+        }else if((accountDetails[1].equals("null") && (accountDetails[2].equals("null")))){
             new AlertDialog.Builder(main)
                     .setTitle("No Records Found")
                     .setMessage("Do you want to create a new account?")
@@ -117,6 +122,11 @@ public class ValidateAccount extends AsyncTask<String, String, Void> {
         }else{
             Toast.makeText(main, "Invalid username/password", Toast.LENGTH_SHORT).show();
         }
+        //NicheUser nUser = new NicheUser(Integer.parseInt(accountDetails[0]));
+        //TenantProfileActivity tpa = new TenantProfileActivity(nUser);
+
+
+
         super.onProgressUpdate(values);
     }
     @Override
@@ -124,4 +134,23 @@ public class ValidateAccount extends AsyncTask<String, String, Void> {
         pd.dismiss();
         super.onPostExecute(aVoid);
     }
+    private void showError(String[] accountDetails){
+        if(accountDetails[4].equals("Tenant")) {
+            Intent goTenantDashboardActivity = new Intent(main, TenantDashboardActivity.class);
+            goTenantDashboardActivity.putExtra("userID", String.valueOf(accountDetails[0]));
+            main.startActivity(goTenantDashboardActivity);
+            Toast.makeText(context, "Welcome to DashBoard", Toast.LENGTH_SHORT).show();
+        }else if(accountDetails[4].equals("Landlord")){
+            Intent goLandlordDashboardActivity = new Intent(main, LandlordDashboardActivity.class);
+            main.startActivity(goLandlordDashboardActivity);
+            Toast.makeText(context, "Welcome to DashBoard", Toast.LENGTH_SHORT).show();
+        }else if(accountDetails[4].equals("Property Manager")){
+            Intent goPropertyManagerDashboardActivity = new Intent(main, PropertyManagerDashboardActivity.class);
+            main.startActivity(goPropertyManagerDashboardActivity);
+            Toast.makeText(context, "Welcome to DashBoard", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Currently unavailable", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }

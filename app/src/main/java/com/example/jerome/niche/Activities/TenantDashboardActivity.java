@@ -11,6 +11,7 @@ import android.widget.TabHost;
 import android.widget.Toast;
 
 import com.example.jerome.niche.R;
+import com.example.jerome.niche.classes.NicheUser;
 
 /**
  * @author: kappatid LLC
@@ -50,6 +51,7 @@ public class TenantDashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent goPersonalInfo = new Intent(TenantDashboardActivity.this, TenantProfileActivity.class);
+                goPersonalInfo.putExtra("userID", getIntent().getExtras().getString("userID"));
                 TenantDashboardActivity.this.startActivity(goPersonalInfo);
             }
         });

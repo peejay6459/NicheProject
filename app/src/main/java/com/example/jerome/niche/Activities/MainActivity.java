@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jerome.niche.classes.NicheUser;
+import com.example.jerome.niche.dao.LoadTenantInformation;
 import com.example.jerome.niche.dao.ValidateAccount;
 import com.example.jerome.niche.classes.FieldHelper;
 import com.example.jerome.niche.R;
@@ -72,8 +74,9 @@ public class MainActivity extends AppCompatActivity implements Settings {
                 if((username.isEmpty()) || (password.isEmpty())){
                     Toast.makeText(MainActivity.this, "Username/Password can't be blank", Toast.LENGTH_SHORT).show();
                 }else {
-                    ValidateAccount vc = new ValidateAccount(getApplicationContext(), MainActivity.this, username, password);
-                    vc.execute(Settings.URL_ADDRESS_VALIDATE_ACCOUNT);
+                    NicheUser nUser = new NicheUser(username, password);
+                    ValidateAccount vc = new ValidateAccount(getApplicationContext(), MainActivity.this, nUser);
+                    vc.execute(Settings.URL_ADDRESS_VALIDATE_ACCOUNT, Settings.URL_ADDRESS_INSERT_TENANT_INFORMATION);
                 }
 
 

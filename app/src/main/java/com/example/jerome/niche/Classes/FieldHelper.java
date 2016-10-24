@@ -2,7 +2,10 @@ package com.example.jerome.niche.classes;
 
 import android.text.InputType;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.TextView;
+
+import com.example.jerome.niche.R;
 
 import java.util.ArrayList;
 

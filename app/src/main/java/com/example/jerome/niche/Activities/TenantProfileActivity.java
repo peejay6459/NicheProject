@@ -9,6 +9,13 @@ import android.widget.TextView;
 
 import com.example.jerome.niche.classes.FieldHelper;
 import com.example.jerome.niche.R;
+import com.example.jerome.niche.classes.NicheUser;
+import com.example.jerome.niche.classes.Tenant;
+import com.example.jerome.niche.dao.AlterTenantInformation;
+import com.example.jerome.niche.dao.LoadTenantInformation;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -18,6 +25,9 @@ import java.util.ArrayList;
  */
 
 public class TenantProfileActivity extends AppCompatActivity {
+
+    String urlAddressLoad = "http://kappatid.co.nf/loadTenantInformation.php";
+    String urlAddressAlter = "http://kappatid.co.nf/alterTenantInformation.php";
     private TextView editName;
     private TextView editDob;
     private TextView editPhone;
@@ -32,12 +42,33 @@ public class TenantProfileActivity extends AppCompatActivity {
     private TextView editPrevCountry;
     private TextView editRelName;
     private TextView editRelRelationship;
-    private TextView editRelAdd;
+    private TextView editRelAdd1;
+    private TextView editRelAdd2;
+    private TextView editRelSuburb;
+    private TextView editRelCity;
     private TextView editRelPhoneMobile;
     private RadioButton rdioMale;
     private RadioButton rdioFemale;
     private ArrayList<TextView> fields = new ArrayList<>();
     private FieldHelper fh = new FieldHelper();
+    private String name;
+    private String dob;
+    private String phone;
+    private String mobile;
+    private String address;
+    private String country;
+    private String passport;
+    private String idNum;
+    private String prevCountry;
+    private String relName;
+    private String relRelationship;
+    private String relAddress;
+    private String relPhoneOrMobile;
+    private JSONObject tenantInfo;
+    //private Tenant tenant;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +89,10 @@ public class TenantProfileActivity extends AppCompatActivity {
         editPrevCountry = (TextView) findViewById(R.id.editPrevCountry);
         editRelName = (TextView) findViewById(R.id.editRelName);
         editRelRelationship = (TextView) findViewById(R.id.editRelRelationship);
-        editRelAdd = (TextView) findViewById(R.id.editRelAdd);
+        editRelAdd1 = (TextView) findViewById(R.id.editRelAdd1);
+        editRelAdd2 = (TextView) findViewById(R.id.editRelAdd2);
+        editRelSuburb = (TextView) findViewById(R.id.editRelSuburb);
+        editRelCity = (TextView) findViewById(R.id.editRelCity);
         editRelPhoneMobile = (TextView) findViewById(R.id.editRelPhoneMobile);
         rdioMale = (RadioButton) findViewById(R.id.rdioMale);
         rdioFemale = (RadioButton) findViewById(R.id.rdioFemale);
@@ -77,7 +111,10 @@ public class TenantProfileActivity extends AppCompatActivity {
         fields.add(editPrevCountry);
         fields.add(editRelName);
         fields.add(editRelRelationship);
-        fields.add(editRelAdd);
+        fields.add(editRelAdd1);
+        fields.add(editRelAdd2);
+        fields.add(editRelSuburb);
+        fields.add(editRelCity);
         fields.add(editRelPhoneMobile);
         fields.add(rdioMale);
         fields.add(rdioFemale);
@@ -89,6 +126,30 @@ public class TenantProfileActivity extends AppCompatActivity {
         rdioMale.setClickable(false);
         rdioFemale.setClickable(false);
 
+        LoadTenantInformation lti = new LoadTenantInformation(this, getIntent().getExtras().getString("userID"), editName, editDob, editPhone, editMobile, editCountry, editPassport,
+                editIdNum, editPrevCountry, editRelName, editRelRelationship, editRelPhoneMobile);
+        lti.execute(urlAddressLoad);
+
+    }
+
+    public String getTenantJsonObject(){
+        try {
+            tenantInfo = new JSONObject();
+            tenantInfo.put("name", editName.getText().toString());
+            tenantInfo.put("dob", editDob.getText().toString());
+            tenantInfo.put("phone", editPassport.getText().toString());
+            tenantInfo.put("mobile", editMobile.getText().toString());
+            tenantInfo.put("country", editCountry.getText().toString());
+            tenantInfo.put("passport", editPassport.getText().toString());
+            tenantInfo.put("idNum", editIdNum.getText().toString());
+            tenantInfo.put("previousCountry", editPrevCountry.getText().toString());
+            tenantInfo.put("relName", editRelName.getText().toString());
+            tenantInfo.put("relPhone", editRelPhoneMobile.getText().toString());
+
+        }catch(JSONException e){
+            e.printStackTrace();
+        }
+        return tenantInfo.toString();
     }
 
     @Override
@@ -109,6 +170,9 @@ public class TenantProfileActivity extends AppCompatActivity {
             fh.setEditableFalse(fields);
             rdioMale.setClickable(false);
             rdioFemale.setClickable(false);
+            AlterTenantInformation eti = new AlterTenantInformation(this);
+            eti.execute(urlAddressAlter);
+
         }
         return super.onOptionsItemSelected(item);
     }

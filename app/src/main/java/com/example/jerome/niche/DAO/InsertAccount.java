@@ -3,6 +3,7 @@ package com.example.jerome.niche.dao;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.example.jerome.niche.activities.RegisterActivity;
 
@@ -76,7 +77,8 @@ public class InsertAccount extends AsyncTask<String, String, Void> {
     }
 
     @Override
-    protected    void onProgressUpdate(String... values) {
+    protected void onProgressUpdate(String... values) {
+
         super.onProgressUpdate(values);
     }
 
