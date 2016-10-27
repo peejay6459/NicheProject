@@ -4,15 +4,10 @@
 
 
     <item
-        android:icon="@drawable/ic_action_addtenants"
+        android:icon="@drawable/ic_add_room"
         Niche:showAsAction="ifRoom"
-        android:id="@+id/manageRooms"
+        android:id="@+id/addRoom"
         android:title="Any"/>
-
-    <item
-        Niche:showAsAction="never"
-        android:id="@+id/options"
-        android:title="Anyone"/>
 
 
 </menu>

@@ -37,7 +37,7 @@ public class ManageRoomsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.manageRooms) {
+        if(id == R.id.addRoom) {
             Intent addTenant = new Intent(this, TenantRegisterActivity.class);
             this.startActivity(addTenant);
         }

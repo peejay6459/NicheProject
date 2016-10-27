@@ -1,8 +1,11 @@
 package com.example.jerome.niche.dao;
 
 import android.app.ProgressDialog;
+import android.graphics.Color;
 import android.os.AsyncTask;
+import android.provider.MediaStore;
 import android.util.Log;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.example.jerome.niche.activities.TenantProfileActivity;
@@ -26,9 +29,13 @@ public class LoadTenantInformation extends AsyncTask<String, String, Tenant> {
     TenantProfileActivity tpa;
     ProgressDialog pd;
     String tenantID;
-    public LoadTenantInformation(TenantProfileActivity tpa, String tenantID, TextView... tenantField){
+    RadioButton rdioMale;
+    RadioButton rdioFemale;
+    public LoadTenantInformation(TenantProfileActivity tpa, String tenantID, RadioButton rdioMale, RadioButton rdioFemale, TextView... tenantField){
         this.tpa = tpa;
         this.tenantID = tenantID;
+        this.rdioMale = rdioMale;
+        this.rdioFemale = rdioFemale;
         this.tenantField = tenantField;
     }
     @Override
@@ -66,10 +73,14 @@ public class LoadTenantInformation extends AsyncTask<String, String, Tenant> {
             JSONArray tenantInfo = new JSONArray(sb.toString());
             for (int i = 0; i < tenantInfo.length(); i++) {
                 JSONObject tenantData = tenantInfo.getJSONObject(i);
-                publishProgress(tenantData.getString("tenant_ID"), tenantData.getString("tenant_name"), tenantData.getString("tenant_gender"), tenantData.getString("tenant_dob"),
-                        tenantData.getString("tenant_phone"), tenantData.getString("tenant_mobile"), tenantData.getString("tenant_address"), tenantData.getString("tenant_country"),
-                        tenantData.getString("tenant_passport_number"), tenantData.getString("tenant_id_num"), tenantData.getString("tenant_previous_country"),
-                        tenantData.getString("tenant_relative_name"), tenantData.getString("tenant_relative_relationship"), tenantData.getString("tenant_relative_address"),
+                publishProgress(tenantData.getString("tenant_ID"), tenantData.getString("tenant_name"), tenantData.getString("tenant_gender"),
+                        tenantData.getString("tenant_dob"), tenantData.getString("tenant_phone"), tenantData.getString("tenant_mobile"),
+                        tenantData.getString("tenant_address1"), tenantData.getString("tenant_address2"), tenantData.getString("tenant_suburb"),
+                        tenantData.getString("tenant_city"), tenantData.getString("tenant_country"), tenantData.getString("tenant_passport_number"),
+                        tenantData.getString("tenant_id_num"), tenantData.getString("tenant_previous_country"),
+                        tenantData.getString("tenant_relative_name"), tenantData.getString("tenant_relative_relationship"),
+                        tenantData.getString("tenant_relative_address1"), tenantData.getString("tenant_relative_address2"),
+                        tenantData.getString("tenant_relative_suburb"), tenantData.getString("tenant_relative_city"),
                         tenantData.getString("tenant_relative_contact"));
             }
 
@@ -83,21 +94,7 @@ public class LoadTenantInformation extends AsyncTask<String, String, Tenant> {
     @Override
     protected void onProgressUpdate(String... values) {
         super.onProgressUpdate(values);
-        //Tenant tenant = new Tenant(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7], values[8], values[9], values[10], values[11], values[12], values[13]);
-        tenantField[0].setText(values[1]);
-        tenantField[1].setText(values[3]);
-        tenantField[2].setText(values[4]);
-        tenantField[3].setText(values[5]);
-        tenantField[4].setText(values[7]);
-        tenantField[5].setText(values[8]);
-        tenantField[6].setText(values[9]);
-        tenantField[7].setText(values[10]);
-        tenantField[8].setText(values[11]);
-        tenantField[9].setText(values[12]);
-        tenantField[10].setText(values[14]);
-
-        //new TenantProfileActivity(tenant);
-        //new TenantProfileActivity(tenant);
+        setInformation(values);
 
     }
 
@@ -106,4 +103,55 @@ public class LoadTenantInformation extends AsyncTask<String, String, Tenant> {
         pd.dismiss();
         super.onPostExecute(tenant);
     }
+
+    public void setInformation(String... values){
+        tenantField[0].setText(values[1]);
+        //tenantField[0].setTextColor(Color.BLACK);
+        if(values[2].equals("Male")){
+            rdioMale.setChecked(true);
+            rdioFemale.setChecked(false);
+            //rdioMale.setTextColor(Color.BLACK);
+        }else if(values[2].equals("Female")){
+            rdioFemale.setChecked(true);
+            rdioMale.setChecked(false);
+            //rdioFemale.setTextColor(Color.BLACK);
+        }
+        tenantField[1].setText(values[3]);
+        //tenantField[1].setTextColor(Color.BLACK);
+        tenantField[2].setText(values[4]);
+        //tenantField[2].setTextColor(Color.BLACK);
+        tenantField[3].setText(values[5]);
+        //tenantField[3].setTextColor(Color.BLACK);
+        tenantField[4].setText(values[6]);
+        //tenantField[4].setTextColor(Color.BLACK);
+        tenantField[5].setText(values[7]);
+        //tenantField[5].setTextColor(Color.BLACK);
+        tenantField[6].setText(values[8]);
+        //tenantField[6].setTextColor(Color.BLACK);
+        tenantField[7].setText(values[9]);
+        //tenantField[7].setTextColor(Color.BLACK);
+        tenantField[8].setText(values[10]);
+        //tenantField[8].setTextColor(Color.BLACK);
+        tenantField[9].setText(values[11]);
+        //tenantField[9].setTextColor(Color.BLACK);
+        tenantField[10].setText(values[12]);
+        //tenantField[10].setTextColor(Color.BLACK);
+        tenantField[11].setText(values[13]);
+        //tenantField[11].setTextColor(Color.BLACK);
+        tenantField[12].setText(values[14]);
+        //tenantField[12].setTextColor(Color.BLACK);
+        tenantField[13].setText(values[15]);
+        //tenantField[13].setTextColor(Color.BLACK);
+        tenantField[14].setText(values[16]);
+        //tenantField[14].setTextColor(Color.BLACK);
+        tenantField[15].setText(values[17]);
+        //tenantField[15].setTextColor(Color.BLACK);
+        tenantField[16].setText(values[18]);
+        //tenantField[16].setTextColor(Color.BLACK);
+        tenantField[17].setText(values[19]);
+        //tenantField[17].setTextColor(Color.BLACK);
+        tenantField[18].setText(values[20]);
+        //tenantField[18].setTextColor(Color.BLACK);
+    }
+
 }

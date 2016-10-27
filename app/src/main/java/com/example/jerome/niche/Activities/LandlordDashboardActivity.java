@@ -1,6 +1,7 @@
 package com.example.jerome.niche.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -12,8 +13,6 @@ import android.widget.Toast;
 
 import com.example.jerome.niche.R;
 
-import static android.R.attr.onClick;
-
 /**
  * Created by philip on 10/21/2016.
  */
@@ -24,11 +23,14 @@ public class LandlordDashboardActivity extends AppCompatActivity {
     Button btnLandlordManageProperties;
     TabHost th;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landlord_dashboard);
         setTitle("Landlord Dashboard");
+
+
         // To enable Action bar's back button
         // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btnLandlordInfo = (Button) findViewById(R.id.btnLandlordPersonalInformation);

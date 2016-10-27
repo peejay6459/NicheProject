@@ -1,6 +1,7 @@
 package com.example.jerome.niche.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -24,7 +25,6 @@ public class TenantDashboardActivity extends AppCompatActivity {
     Button btnTenantInfo;
     Button btnTenantRoomsOffered;
     Button btnTenantPaymentHistory;
-
     TabHost th;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,6 @@ public class TenantDashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent goPersonalInfo = new Intent(TenantDashboardActivity.this, TenantProfileActivity.class);
-                goPersonalInfo.putExtra("userID", getIntent().getExtras().getString("userID"));
                 TenantDashboardActivity.this.startActivity(goPersonalInfo);
             }
         });

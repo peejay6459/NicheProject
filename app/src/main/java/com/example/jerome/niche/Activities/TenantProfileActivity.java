@@ -1,7 +1,9 @@
 package com.example.jerome.niche.activities;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RadioButton;
@@ -9,9 +11,8 @@ import android.widget.TextView;
 
 import com.example.jerome.niche.classes.FieldHelper;
 import com.example.jerome.niche.R;
-import com.example.jerome.niche.classes.NicheUser;
-import com.example.jerome.niche.classes.Tenant;
-import com.example.jerome.niche.dao.AlterTenantInformation;
+import com.example.jerome.niche.classes.Settings;
+import com.example.jerome.niche.dao.UpdateTenantInformation;
 import com.example.jerome.niche.dao.LoadTenantInformation;
 
 import org.json.JSONException;
@@ -26,8 +27,7 @@ import java.util.ArrayList;
 
 public class TenantProfileActivity extends AppCompatActivity {
 
-    String urlAddressLoad = "http://kappatid.co.nf/loadTenantInformation.php";
-    String urlAddressAlter = "http://kappatid.co.nf/alterTenantInformation.php";
+
     private TextView editName;
     private TextView editDob;
     private TextView editPhone;
@@ -51,20 +51,8 @@ public class TenantProfileActivity extends AppCompatActivity {
     private RadioButton rdioFemale;
     private ArrayList<TextView> fields = new ArrayList<>();
     private FieldHelper fh = new FieldHelper();
-    private String name;
-    private String dob;
-    private String phone;
-    private String mobile;
-    private String address;
-    private String country;
-    private String passport;
-    private String idNum;
-    private String prevCountry;
-    private String relName;
-    private String relRelationship;
-    private String relAddress;
-    private String relPhoneOrMobile;
     private JSONObject tenantInfo;
+    private String userID;
     //private Tenant tenant;
 
 
@@ -74,6 +62,9 @@ public class TenantProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tenant_profile);
         setTitle("Personal Information");
+
+        SharedPreferences pref = getSharedPreferences("USER_ID", MODE_PRIVATE);
+        userID = pref.getString("userID", "");
 
         editName = (TextView) findViewById(R.id.editName);
         editDob = (TextView) findViewById(R.id.editDob);
@@ -126,9 +117,14 @@ public class TenantProfileActivity extends AppCompatActivity {
         rdioMale.setClickable(false);
         rdioFemale.setClickable(false);
 
-        LoadTenantInformation lti = new LoadTenantInformation(this, getIntent().getExtras().getString("userID"), editName, editDob, editPhone, editMobile, editCountry, editPassport,
-                editIdNum, editPrevCountry, editRelName, editRelRelationship, editRelPhoneMobile);
-        lti.execute(urlAddressLoad);
+        LoadTenantInformation lti = new LoadTenantInformation(this, userID, rdioMale, rdioFemale,
+                editName, editDob, editPhone, editMobile, editAdd1, editAdd2, editSuburb, editCity, editCountry, editPassport,
+                editIdNum, editPrevCountry, editRelName, editRelRelationship, editRelAdd1, editRelAdd2, editRelSuburb, editRelCity,
+                editRelPhoneMobile);
+        lti.execute(Settings.URL_ADDRESS_LOAD_TENANT_INFORMATION);
+
+
+
 
     }
 
@@ -136,14 +132,28 @@ public class TenantProfileActivity extends AppCompatActivity {
         try {
             tenantInfo = new JSONObject();
             tenantInfo.put("name", editName.getText().toString());
+            if(rdioMale.isChecked()){
+                tenantInfo.put("gender", "Male");
+            }else if(rdioFemale.isChecked()){
+                tenantInfo.put("gender", "Female");
+            }
             tenantInfo.put("dob", editDob.getText().toString());
             tenantInfo.put("phone", editPassport.getText().toString());
             tenantInfo.put("mobile", editMobile.getText().toString());
+            tenantInfo.put("add1", editAdd1.getText().toString());
+            tenantInfo.put("add2", editAdd2.getText().toString());
+            tenantInfo.put("suburb", editSuburb.getText().toString());
+            tenantInfo.put("city", editCity.getText().toString());
             tenantInfo.put("country", editCountry.getText().toString());
             tenantInfo.put("passport", editPassport.getText().toString());
             tenantInfo.put("idNum", editIdNum.getText().toString());
             tenantInfo.put("previousCountry", editPrevCountry.getText().toString());
             tenantInfo.put("relName", editRelName.getText().toString());
+            tenantInfo.put("relRelationship", editRelRelationship.getText().toString());
+            tenantInfo.put("relAdd1", editRelAdd1.getText().toString());
+            tenantInfo.put("relAdd2", editRelAdd2.getText().toString());
+            tenantInfo.put("relSuburb", editRelSuburb.getText().toString());
+            tenantInfo.put("relCity", editRelCity.getText().toString());
             tenantInfo.put("relPhone", editRelPhoneMobile.getText().toString());
 
         }catch(JSONException e){
@@ -165,13 +175,14 @@ public class TenantProfileActivity extends AppCompatActivity {
             fh.setEditableTrue(fields);
             rdioMale.setClickable(true);
             rdioFemale.setClickable(true);
+            Log.d("JSON ->", getTenantJsonObject());
 
         }else if(id == R.id.savePersonalInfo){
             fh.setEditableFalse(fields);
             rdioMale.setClickable(false);
             rdioFemale.setClickable(false);
-            AlterTenantInformation eti = new AlterTenantInformation(this);
-            eti.execute(urlAddressAlter);
+            UpdateTenantInformation uti = new UpdateTenantInformation(this, userID);
+            uti.execute(Settings.URL_ADDRESS_UPDATE_TENANT_INFORMATION);
 
         }
         return super.onOptionsItemSelected(item);

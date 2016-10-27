@@ -2,27 +2,22 @@ package com.example.jerome.niche.dao;
 
 import android.os.AsyncTask;
 
-import com.example.jerome.niche.activities.TenantProfileActivity;
+import com.example.jerome.niche.activities.LandlordCreateRoomActivity;
 
-import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 
 /**
- * Created by Jerome on 24/10/2016.
+ * Created by Jerome on 27/10/2016.
  */
 
-public class AlterTenantInformation extends AsyncTask <String, Void, Void> {
-    TenantProfileActivity tpa;
-
-    public AlterTenantInformation(TenantProfileActivity tpa){
-        this.tpa = tpa;
+public class InsertProperty extends AsyncTask<String, Void, Void> {
+    private LandlordCreateRoomActivity lcra;
+    public InsertProperty(LandlordCreateRoomActivity lcra){
+        this.lcra = lcra;
     }
-
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
@@ -30,23 +25,19 @@ public class AlterTenantInformation extends AsyncTask <String, Void, Void> {
 
     @Override
     protected Void doInBackground(String... params) {
-        try {
+        try{
             URL url = new URL(params[0]);
             URLConnection con = url.openConnection();
-            String alterTenant = URLEncoder.encode("tenantObject", "UTF-8");
-            alterTenant += "=" + URLEncoder.encode(tpa.getTenantJsonObject(), "UTF-8");
+
+            String passProperty = URLEncoder.encode("propertyObject", "UTF-8");
+            passProperty += "=" + URLEncoder.encode(lcra.getPropertyJsonObject(), "UTF-8");
 
             con.setDoOutput(true);
             OutputStreamWriter os = new OutputStreamWriter(con.getOutputStream());
-            os.write(alterTenant);
+            os.write(passProperty);
             os.flush();
             con.getInputStream();
-
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        }catch (Exception e){
             e.printStackTrace();
         }
         return null;

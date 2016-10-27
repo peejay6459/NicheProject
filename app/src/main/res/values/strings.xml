@@ -16,4 +16,10 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
+
+    <string-array name="property_managers">
+        <item>Select Property Manager</item>
+        <item>Philip Sepulveda</item>
+        <item>Jerome Wee</item>
+    </string-array>
 </resources>

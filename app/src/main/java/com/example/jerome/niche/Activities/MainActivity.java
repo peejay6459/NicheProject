@@ -1,7 +1,9 @@
 package com.example.jerome.niche.activities;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,7 +24,7 @@ import com.example.jerome.niche.classes.Settings;
  *       It serves as the Login Page of the application
  *
  */
-public class MainActivity extends AppCompatActivity implements Settings {
+public class MainActivity extends AppCompatActivity implements Settings, ValidateAccount.AsyncResponse {
     // @urlAddress to store the address of the php file
     //private String urlAddress = "http://kappatid.co.nf/getAccountDetails.php";
     // @txtUsername to store the value of username
@@ -66,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements Settings {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 // Using MySQL
 
                 String username = txtUsername.getText().toString();
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements Settings {
                     Toast.makeText(MainActivity.this, "Username/Password can't be blank", Toast.LENGTH_SHORT).show();
                 }else {
                     NicheUser nUser = new NicheUser(username, password);
-                    ValidateAccount vc = new ValidateAccount(getApplicationContext(), MainActivity.this, nUser);
+                    ValidateAccount vc = new ValidateAccount(getApplicationContext(), MainActivity.this, MainActivity.this, nUser);
                     vc.execute(Settings.URL_ADDRESS_VALIDATE_ACCOUNT, Settings.URL_ADDRESS_INSERT_TENANT_INFORMATION);
                 }
 
@@ -120,4 +121,11 @@ public class MainActivity extends AppCompatActivity implements Settings {
         });
     }
 
+    @Override
+    public void processFinish(String userID) {
+
+        SharedPreferences.Editor editor = getSharedPreferences("USER_ID", MODE_PRIVATE).edit();
+        editor.putString("userID", userID);
+        editor.apply();
+    }
 }
