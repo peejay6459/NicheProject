@@ -17,8 +17,8 @@ import java.net.URLEncoder;
  */
 
 public class UpdateTenantInformation extends AsyncTask <String, Void, Void> {
-    TenantProfileActivity tpa;
-    String tenantID;
+    private TenantProfileActivity tpa;
+    private String tenantID;
 
     public UpdateTenantInformation(TenantProfileActivity tpa, String tenantID){
         this.tpa = tpa;

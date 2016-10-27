@@ -36,12 +36,12 @@ public class ValidateAccount extends AsyncTask<String, String, Void> {
         void processFinish(String userID);
     }
 
-    AsyncResponse delegate = null;
-    MainActivity main;
-    Context context;
-    NicheUser nUser;
-    ProgressDialog pd;
-    String userID;
+    private AsyncResponse delegate = null;
+    private MainActivity main;
+    private Context context;
+    private NicheUser nUser;
+    private ProgressDialog pd;
+    private String userID;
 
     public ValidateAccount(Context context, AsyncResponse delegate, MainActivity main, NicheUser nUser){
         this.context = context;

@@ -6,8 +6,12 @@
     <item
         android:icon="@drawable/ic_add_room"
         Niche:showAsAction="ifRoom"
-        android:id="@+id/addRoom"
+        android:id="@+id/addProperty"
         android:title="Any"/>
 
+    <item
+        Niche:showAsAction="never"
+        android:id="@+id/editProperty"
+        android:title="Edit Property"/>
 
 </menu>

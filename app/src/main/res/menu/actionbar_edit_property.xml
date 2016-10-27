@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:Niche="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:icon="@drawable/ic_action_edit"
+        Niche:showAsAction="ifRoom"
+        android:id="@+id/editPropertyInfo"
+        android:title="@string/edit_button"
+        />
+
+    <item
+        android:icon="@drawable/ic_action_save"
+        Niche:showAsAction="ifRoom"
+        android:id="@+id/savePropertyInfo"
+        android:title="@string/save_button"
+        />
+
+    <item
+        Niche:showAsAction="never"
+        android:id="@+id/deleteProperty"
+        android:title="Delete Property"
+        />
+
+</menu>

@@ -25,12 +25,12 @@ import java.net.URLEncoder;
 
 public class LoadTenantInformation extends AsyncTask<String, String, Tenant> {
 
-    TextView[] tenantField;
-    TenantProfileActivity tpa;
-    ProgressDialog pd;
-    String tenantID;
-    RadioButton rdioMale;
-    RadioButton rdioFemale;
+    private TextView[] tenantField;
+    private TenantProfileActivity tpa;
+    private ProgressDialog pd;
+    private String tenantID;
+    private RadioButton rdioMale;
+    private RadioButton rdioFemale;
     public LoadTenantInformation(TenantProfileActivity tpa, String tenantID, RadioButton rdioMale, RadioButton rdioFemale, TextView... tenantField){
         this.tpa = tpa;
         this.tenantID = tenantID;

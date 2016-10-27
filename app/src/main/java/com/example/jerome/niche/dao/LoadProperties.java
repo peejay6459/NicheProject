@@ -26,12 +26,12 @@ public class LoadProperties extends AsyncTask<String, String, ArrayList<String>>
         void processFinish(ArrayList<String> address2, ArrayList<String> address1);
     }
 
-    AsyncResponse delegate = null;
-    Context context;
-    ArrayList<String> address2;
-    ArrayList<String> address1;
-    String userID;
-    ProgressDialog pd;
+    private AsyncResponse delegate = null;
+    private Context context;
+    private ArrayList<String> address2;
+    private ArrayList<String> address1;
+    private String userID;
+    private ProgressDialog pd;
     public LoadProperties(Context context, AsyncResponse delegate, ArrayList<String> address2, ArrayList<String> address1, String userID){
         this.context = context;
         this.delegate = delegate;
