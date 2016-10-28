@@ -31,6 +31,10 @@ public class LandlordManageRoomsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
+        if(id == R.id.addRoom){
+            // do something
+
+        }
         if(id == R.id.editProperty){
             Intent goEditProperty = new Intent(LandlordManageRoomsActivity.this, LandlordEditPropertyActivity.class);
             LandlordManageRoomsActivity.this.startActivity(goEditProperty);

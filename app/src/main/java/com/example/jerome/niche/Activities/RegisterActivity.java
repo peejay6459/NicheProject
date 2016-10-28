@@ -3,6 +3,7 @@ package com.example.jerome.niche.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -23,15 +24,16 @@ import com.example.jerome.niche.classes.Settings;
  *      It takes data from user input then send the data
  *      into the middle tier class
  */
-public class RegisterActivity extends AppCompatActivity implements Settings {
-    TextView txtRegUsername;
-    TextView txtRegEmail;
-    TextView txtRegPassword;
-    TextView txtRegConfirmPassword;
-    CheckBox cbTermsOfServices;
-    CheckBox cbPrivacyPolicy;
-    Button btnRegister;
-    Spinner spinUserType;
+public class RegisterActivity extends AppCompatActivity implements InsertAccount.AsyncResponse {
+    private TextView txtRegUsername;
+    private TextView txtRegEmail;
+    private TextView txtRegPassword;
+    private TextView txtRegConfirmPassword;
+    private CheckBox cbTermsOfServices;
+    private CheckBox cbPrivacyPolicy;
+    private Button btnRegister;
+    private Spinner spinUserType;
+    private String result;
     //private String urlAddress = "http://kappatid.co.nf/insertAccountDetails.php";
 
     @Override
@@ -96,11 +98,9 @@ public class RegisterActivity extends AppCompatActivity implements Settings {
                                 String password = txtRegPassword.getText().toString();
                                 String email = txtRegEmail.getText().toString();
                                 String userType = String.valueOf(spinUserType.getSelectedItem());
-                                InsertAccount ic = new InsertAccount(getApplicationContext(), RegisterActivity.this, username, password, email, userType);
+                                InsertAccount ic = new InsertAccount(getApplicationContext(), RegisterActivity.this, username, password, email, userType, RegisterActivity.this);
                                 ic.execute(Settings.URL_ADDRESS_INSERT_ACCOUNT);
-                                Intent goMainActivity = new Intent(RegisterActivity.this, MainActivity.class);
-                                RegisterActivity.this.startActivity(goMainActivity);
-                                Toast.makeText(RegisterActivity.this, "Inserted Successfully", Toast.LENGTH_SHORT).show();
+                                //processFinish(result);
                             }else {
                                 Toast.makeText(RegisterActivity.this, "Invalid Email Address", Toast.LENGTH_SHORT).show();
                             }
@@ -115,6 +115,18 @@ public class RegisterActivity extends AppCompatActivity implements Settings {
         });
 
 
+    }
+
+    @Override
+    public void processFinish(String result1) {
+        Log.d("result->>>>>>>", result1);
+        if(result1.equals("already exist")) {
+            Toast.makeText(RegisterActivity.this, "Username already exist", Toast.LENGTH_SHORT).show();
+        }else{
+            Intent goMainActivity = new Intent(RegisterActivity.this, MainActivity.class);
+            RegisterActivity.this.startActivity(goMainActivity);
+            Toast.makeText(RegisterActivity.this, "Inserted Successfully", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

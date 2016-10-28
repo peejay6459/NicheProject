@@ -26,8 +26,6 @@ import java.util.ArrayList;
  */
 
 public class TenantProfileActivity extends AppCompatActivity {
-
-
     private TextView editName;
     private TextView editDob;
     private TextView editPhone;
@@ -164,7 +162,7 @@ public class TenantProfileActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        this.getMenuInflater().inflate(R.menu.actionbar_tenant_info, menu);
+        this.getMenuInflater().inflate(R.menu.actionbar_personal_info, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

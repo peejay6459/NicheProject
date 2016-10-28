@@ -86,13 +86,15 @@ public class ValidateAccount extends AsyncTask<String, String, Void> {
                     URL url1 = new URL(params[1]);
                     URLConnection con1 = url1.openConnection();
                     Log.d("URL", params[1]);
-                    String insertID = URLEncoder.encode("tenantID", "UTF-8");
+                    String insertID = URLEncoder.encode("userID", "UTF-8");
                     insertID += "=" + URLEncoder.encode(accountDetails[0], "UTF-8");
-                    Log.d("This is what I need", accountDetails[0]);
+                    String userType = URLEncoder.encode("userType", "UTF-8");
+                    userType += "=" + URLEncoder.encode(accountDetails[4], "UTF-8");
+                    Log.d("userType", accountDetails[4]);
 
                     con1.setDoOutput(true);
                     os = new OutputStreamWriter(con1.getOutputStream());
-                    os.write(insertID);
+                    os.write(insertID + "&" + userType);
                     os.flush();
                     con1.getInputStream();
                 }
@@ -145,17 +147,14 @@ public class ValidateAccount extends AsyncTask<String, String, Void> {
     private void showError(String[] accountDetails){
         if(accountDetails[4].equals("Tenant")) {
             Intent goTenantDashboardActivity = new Intent(main, TenantDashboardActivity.class);
-            goTenantDashboardActivity.putExtra("userID", String.valueOf(accountDetails[0]));
             main.startActivity(goTenantDashboardActivity);
             Toast.makeText(context, "Welcome to DashBoard", Toast.LENGTH_SHORT).show();
         }else if(accountDetails[4].equals("Landlord")){
             Intent goLandlordDashboardActivity = new Intent(main, LandlordDashboardActivity.class);
-            goLandlordDashboardActivity.putExtra("userID", String.valueOf(accountDetails[0]));
             main.startActivity(goLandlordDashboardActivity);
             Toast.makeText(context, "Welcome to DashBoard", Toast.LENGTH_SHORT).show();
         }else if(accountDetails[4].equals("Property Manager")){
             Intent goPropertyManagerDashboardActivity = new Intent(main, PropertyManagerDashboardActivity.class);
-            goPropertyManagerDashboardActivity.putExtra("userID", accountDetails[0]);
             main.startActivity(goPropertyManagerDashboardActivity);
             Toast.makeText(context, "Welcome to DashBoard", Toast.LENGTH_SHORT).show();
         }else{

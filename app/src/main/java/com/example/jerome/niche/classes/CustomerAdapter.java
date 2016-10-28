@@ -36,8 +36,6 @@ public class CustomerAdapter extends ArrayAdapter<String> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-
-
         LayoutInflater layoutInflater = LayoutInflater.from(getContext());
         View customView = convertView;
         if(customView == null){
@@ -45,7 +43,6 @@ public class CustomerAdapter extends ArrayAdapter<String> {
             li = layoutInflater.from(getContext());
             customView = li.inflate(R.layout.activity_custom_listview_properties, parent, false);
         }
-
 
         TextView testAdd1 = (TextView) customView.findViewById(R.id.testAdd1);
         TextView testAdd2 = (TextView) customView.findViewById(R.id.testAdd2);

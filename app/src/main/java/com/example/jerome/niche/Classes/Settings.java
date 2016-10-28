@@ -21,6 +21,9 @@ public interface Settings {
     String URL_ADDRESS_LOAD_PROPERTY_INFO = "http://kappatid.co.nf/loadPropertyInfo.php";
     String URL_ADDRESS_UPDATE_PROPERTY_INFO = "http://kappatid.co.nf/updatePropertyInfo.php";
     String URL_ADDRESS_DELETE_PROPERTY = "http://kappatid.co.nf/deleteProperty.php";
+    String URL_ADDRESS_UPDATE_LANDLORD_INFORMATION = "http://kappatid.co.nf/updateLandlordInformation.php";
+    String URL_ADDRESS_LOAD_LANDLORD_INFORMATION = "http://kappatid.co.nf/loadLandlordInformation.php";
+
     /*
     void changeField(final TextView username, final TextView password, final String... params);
     void changeField(final TextView username, final TextView email, final TextView password, final TextView cPassword, final String... params);

@@ -11,9 +11,8 @@
         android:layout_height="match_parent">
 
         <ImageView
-            app:srcCompat="@drawable/property"
+            app:srcCompat="@drawable/sample_room"
             android:id="@+id/testImage"
-            android:layout_margin="10dp"
             android:layout_width="100dp"
             android:layout_height="60dp" />
 

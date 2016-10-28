@@ -22,6 +22,7 @@ import java.util.ArrayList;
 public class LandlordManagePropertiesActivity extends AppCompatActivity implements LoadProperties.AsyncResponse{
 
     private String userID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
