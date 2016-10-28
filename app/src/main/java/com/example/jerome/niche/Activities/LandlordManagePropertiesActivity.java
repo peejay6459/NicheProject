@@ -13,7 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.jerome.niche.R;
-import com.example.jerome.niche.classes.CustomerAdapter;
+import com.example.jerome.niche.classes.PropertiesCustomerAdapter;
 import com.example.jerome.niche.classes.Settings;
 import com.example.jerome.niche.dao.LoadProperties;
 
@@ -53,8 +53,8 @@ public class LandlordManagePropertiesActivity extends AppCompatActivity implemen
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.addProperty){
-            Intent goCreateRoom = new Intent(LandlordManagePropertiesActivity.this, LandlordCreateRoomActivity.class);
-            this.startActivity(goCreateRoom);
+            Intent goCreateProperty = new Intent(LandlordManagePropertiesActivity.this, LandlordCreatePropertyActivity.class);
+            this.startActivity(goCreateProperty);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -63,7 +63,7 @@ public class LandlordManagePropertiesActivity extends AppCompatActivity implemen
     public void processFinish(ArrayList<String> address1, ArrayList<String> address2) {
         Log.d("address1 ", address1.toString());
         Log.d("address2 ", address2.toString());
-        ArrayAdapter propertyAdapter = new CustomerAdapter(this, address1, address2);
+        ArrayAdapter propertyAdapter = new PropertiesCustomerAdapter(this, address1, address2);
         ListView propertyListView = (ListView) findViewById(R.id.propertyListView);
         propertyListView.setAdapter(propertyAdapter);
 

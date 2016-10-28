@@ -20,12 +20,12 @@ import java.util.Arrays;
  * Created by Jerome on 25/10/2016.
  */
 
-public class CustomerAdapter extends ArrayAdapter<String> {
+public class PropertiesCustomerAdapter extends ArrayAdapter<String> {
 
     //String[] address1;
     private ArrayList<String> address1;
     private ArrayList<String> address2;
-    public CustomerAdapter(Context context, ArrayList<String> address1, ArrayList<String> address2) {
+    public PropertiesCustomerAdapter(Context context, ArrayList<String> address1, ArrayList<String> address2) {
         super(context, R.layout.activity_custom_listview_properties, address2);
         this.address1 = address1;
         this.address2 = address2;
@@ -44,12 +44,12 @@ public class CustomerAdapter extends ArrayAdapter<String> {
             customView = li.inflate(R.layout.activity_custom_listview_properties, parent, false);
         }
 
-        TextView testAdd1 = (TextView) customView.findViewById(R.id.testAdd1);
-        TextView testAdd2 = (TextView) customView.findViewById(R.id.testAdd2);
+        TextView flatStreet = (TextView) customView.findViewById(R.id.address1);
+        TextView SuburbCity = (TextView) customView.findViewById(R.id.address2);
         ImageView testImage = (ImageView) customView.findViewById(R.id.testImage);
 
-            testAdd1.setText(address1.get(position));
-            testAdd2.setText(address2.get(position));
+        flatStreet.setText(address1.get(position));
+        SuburbCity.setText(address2.get(position));
 
         testImage.setImageResource(R.drawable.property);
         return customView;

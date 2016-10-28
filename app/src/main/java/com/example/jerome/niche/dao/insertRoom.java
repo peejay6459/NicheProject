@@ -2,7 +2,7 @@ package com.example.jerome.niche.dao;
 
 import android.os.AsyncTask;
 
-import com.example.jerome.niche.activities.LandlordCreatePropertyActivity;
+import com.example.jerome.niche.activities.LandlordCreateRoomActivity;
 
 import java.io.OutputStreamWriter;
 import java.net.URL;
@@ -10,13 +10,13 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 
 /**
- * Created by Jerome on 27/10/2016.
+ * Created by Jerome on 28/10/2016.
  */
 
-public class InsertProperty extends AsyncTask<String, Void, Void> {
-    private LandlordCreatePropertyActivity lcpa;
-    public InsertProperty(LandlordCreatePropertyActivity lcpa){
-        this.lcpa = lcpa;
+public class InsertRoom extends AsyncTask<String, Void, Void> {
+    LandlordCreateRoomActivity lcra;
+    public InsertRoom(LandlordCreateRoomActivity lcra){
+        this.lcra = lcra;
     }
 
     @Override
@@ -25,12 +25,12 @@ public class InsertProperty extends AsyncTask<String, Void, Void> {
             URL url = new URL(params[0]);
             URLConnection con = url.openConnection();
 
-            String passProperty = URLEncoder.encode("propertyObject", "UTF-8");
-            passProperty += "=" + URLEncoder.encode(lcpa.getPropertyJsonObject(), "UTF-8");
+            String passRoom = URLEncoder.encode("roomObject", "UTF-8");
+            passRoom += "=" + URLEncoder.encode(lcra.getRoomDetailsJsonObject(), "UTF-8");
 
             con.setDoOutput(true);
             OutputStreamWriter os = new OutputStreamWriter(con.getOutputStream());
-            os.write(passProperty);
+            os.write(passRoom);
             os.flush();
             con.getInputStream();
         }catch (Exception e){
@@ -38,5 +38,4 @@ public class InsertProperty extends AsyncTask<String, Void, Void> {
         }
         return null;
     }
-
 }

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/holo_blue_bright">
+    android:background="@color/colorAccent">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -14,7 +14,10 @@
             app:srcCompat="@drawable/sample_room"
             android:id="@+id/testImage"
             android:layout_width="100dp"
-            android:layout_height="60dp" />
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -23,22 +26,25 @@
             android:layout_weight="1">
 
             <TextView
-                android:text="Address1"
+                android:text="Room Price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/testAdd1"
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"
-                android:textSize="12sp" />
-
-            <TextView
-                android:text="Address2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/testAdd2"
+                android:id="@+id/roomPrice"
                 android:layout_weight="1"
                 android:layout_marginTop="15dp"
-                android:textSize="12sp" />
+                android:textSize="18sp"
+                android:textStyle="normal|bold"
+                android:textColor="@android:color/background_dark" />
+
+            <TextView
+                android:text="Tenant count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tenantCount"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:textSize="18sp"
+                android:textColor="@android:color/background_dark" />
         </LinearLayout>
 
     </LinearLayout>

@@ -13,9 +13,10 @@
         <ImageView
             app:srcCompat="@drawable/property"
             android:id="@+id/testImage"
-            android:layout_margin="10dp"
             android:layout_width="100dp"
-            android:layout_height="60dp" />
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -27,19 +28,21 @@
                 android:text="Address1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/testAdd1"
+                android:id="@+id/address1"
                 android:layout_weight="1"
-                android:layout_marginTop="10dp"
-                android:textSize="12sp" />
+                android:layout_marginTop="15dp"
+                android:textSize="14sp"
+                android:layout_marginLeft="5dp" />
 
             <TextView
                 android:text="Address2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/testAdd2"
+                android:id="@+id/address2"
                 android:layout_weight="1"
-                android:layout_marginTop="15dp"
-                android:textSize="12sp" />
+                android:layout_marginTop="10dp"
+                android:textSize="14sp"
+                android:layout_marginLeft="5dp" />
         </LinearLayout>
 
     </LinearLayout>

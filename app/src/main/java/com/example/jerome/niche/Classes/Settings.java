@@ -23,6 +23,7 @@ public interface Settings {
     String URL_ADDRESS_DELETE_PROPERTY = "http://kappatid.co.nf/deleteProperty.php";
     String URL_ADDRESS_UPDATE_LANDLORD_INFORMATION = "http://kappatid.co.nf/updateLandlordInformation.php";
     String URL_ADDRESS_LOAD_LANDLORD_INFORMATION = "http://kappatid.co.nf/loadLandlordInformation.php";
+    String URL_ADDRESS_INSERT_ROOM = "http://kappatid.co.nf/insertRoom.php";
 
     /*
     void changeField(final TextView username, final TextView password, final String... params);

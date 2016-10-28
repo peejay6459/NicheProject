@@ -20,7 +20,6 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".activities.ManageRoomsActivity" />
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.TenantDashboardActivity">
 
@@ -99,9 +98,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.PropertyManagerDashboardActivity" />
         </activity>
-        <activity android:name=".activities.LandlordCreateRoomActivity"/>
+        <activity android:name=".activities.LandlordCreatePropertyActivity"/>
         <activity android:name=".activities.LandlordManageRoomsActivity"/>
         <activity android:name=".activities.LandlordEditPropertyActivity">
+
+
+        </activity>
+        <activity android:name=".activities.LandlordCreateRoomActivity">
 
         </activity>
 
