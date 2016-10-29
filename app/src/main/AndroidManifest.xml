@@ -99,14 +99,21 @@
                 android:value=".activities.PropertyManagerDashboardActivity" />
         </activity>
         <activity android:name=".activities.LandlordCreatePropertyActivity"/>
-        <activity android:name=".activities.LandlordManageRoomsActivity"/>
+        <activity android:name=".activities.LandlordManageRoomsActivity"
+            android:parentActivityName=".activities.LandlordManagePropertiesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.LandlordManagePropertiesActivity" />
+        </activity>
         <activity android:name=".activities.LandlordEditPropertyActivity">
 
 
         </activity>
         <activity android:name=".activities.LandlordCreateRoomActivity">
 
+
         </activity>
+        <activity android:name=".activities.LandlordEditRoomActivity"/>
 
     </application>
 

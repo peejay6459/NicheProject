@@ -23,7 +23,6 @@ public class LoadPropertyInfo extends AsyncTask<String, String, Void> {
     private TextView[] propertyInfo;
     private int rowNum;
     private String userID;
-    private ProgressDialog pd;
     public LoadPropertyInfo(Context context, int rowNum, String userID, TextView... propertyInfo){
         this.context = context;
         this.rowNum = rowNum;
@@ -33,10 +32,6 @@ public class LoadPropertyInfo extends AsyncTask<String, String, Void> {
     }
     @Override
     protected void onPreExecute() {
-        pd = new ProgressDialog(context);
-        pd.setTitle("Loading Property Info");
-        pd.setMessage("Please wait");
-        pd.show();
         super.onPreExecute();
     }
 
@@ -80,7 +75,6 @@ public class LoadPropertyInfo extends AsyncTask<String, String, Void> {
 
     @Override
     protected void onPostExecute(Void aVoid) {
-        pd.dismiss();
         super.onPostExecute(aVoid);
     }
 }

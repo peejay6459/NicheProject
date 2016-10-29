@@ -13,7 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.jerome.niche.R;
-import com.example.jerome.niche.classes.PropertiesCustomerAdapter;
+import com.example.jerome.niche.classes.PropertiesCustomAdapter;
 import com.example.jerome.niche.classes.Settings;
 import com.example.jerome.niche.dao.LoadProperties;
 
@@ -60,10 +60,10 @@ public class LandlordManagePropertiesActivity extends AppCompatActivity implemen
     }
 
     @Override
-    public void processFinish(ArrayList<String> address1, ArrayList<String> address2) {
+    public void processFinish(final ArrayList<String> address1, ArrayList<String> address2) {
         Log.d("address1 ", address1.toString());
         Log.d("address2 ", address2.toString());
-        ArrayAdapter propertyAdapter = new PropertiesCustomerAdapter(this, address1, address2);
+        ArrayAdapter propertyAdapter = new PropertiesCustomAdapter(this, address1, address2);
         ListView propertyListView = (ListView) findViewById(R.id.propertyListView);
         propertyListView.setAdapter(propertyAdapter);
 
@@ -72,12 +72,13 @@ public class LandlordManagePropertiesActivity extends AppCompatActivity implemen
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //String property = String.valueOf(parent.getItemAtPosition(position));
                 //Toast.makeText(LandlordManagePropertiesActivity.this, property, Toast.LENGTH_SHORT).show();
-                Intent goManageRooms = new Intent(LandlordManagePropertiesActivity.this, LandlordManageRoomsActivity.class);
-                LandlordManagePropertiesActivity.this.startActivity(goManageRooms);
 
                 SharedPreferences.Editor editor = getSharedPreferences("USER_ID", MODE_PRIVATE).edit();
                 editor.putInt("rowNum", position);
                 editor.apply();
+
+                Intent goManageRooms = new Intent(LandlordManagePropertiesActivity.this, LandlordManageRoomsActivity.class);
+                LandlordManagePropertiesActivity.this.startActivity(goManageRooms);
             }
         });
     }

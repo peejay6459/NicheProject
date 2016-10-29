@@ -12,7 +12,7 @@
 
         <ImageView
             app:srcCompat="@drawable/sample_room"
-            android:id="@+id/testImage"
+            android:id="@+id/roomImage"
             android:layout_width="100dp"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
@@ -37,10 +37,10 @@
                 android:textColor="@android:color/background_dark" />
 
             <TextView
-                android:text="Tenant count"
+                android:text="Occupancy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tenantCount"
+                android:id="@+id/roomOccupancy"
                 android:layout_weight="1"
                 android:layout_marginTop="5dp"
                 android:textSize="18sp"
