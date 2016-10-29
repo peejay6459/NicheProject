@@ -5,9 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -16,9 +14,7 @@ import com.example.jerome.niche.activities.MainActivity;
 import com.example.jerome.niche.activities.PropertyManagerDashboardActivity;
 import com.example.jerome.niche.activities.RegisterActivity;
 import com.example.jerome.niche.activities.TenantDashboardActivity;
-import com.example.jerome.niche.activities.TenantProfileActivity;
 import com.example.jerome.niche.classes.NicheUser;
-import com.example.jerome.niche.classes.Settings;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -133,7 +129,7 @@ public class ValidateAccount extends AsyncTask<String, String, Void> {
         }
         userID = accountDetails[0];
         //NicheUser nUser = new NicheUser(Integer.parseInt(accountDetails[0]));
-        //TenantProfileActivity tpa = new TenantProfileActivity(nUser);
+        //TenantPersonalInformationActivity tpa = new TenantPersonalInformationActivity(nUser);
 
 
 

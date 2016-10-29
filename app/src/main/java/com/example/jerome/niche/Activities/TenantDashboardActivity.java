@@ -1,7 +1,6 @@
 package com.example.jerome.niche.activities;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -12,7 +11,6 @@ import android.widget.TabHost;
 import android.widget.Toast;
 
 import com.example.jerome.niche.R;
-import com.example.jerome.niche.classes.NicheUser;
 
 /**
  * @author: kappatid LLC
@@ -50,7 +48,7 @@ public class TenantDashboardActivity extends AppCompatActivity {
         btnTenantInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goPersonalInfo = new Intent(TenantDashboardActivity.this, TenantProfileActivity.class);
+                Intent goPersonalInfo = new Intent(TenantDashboardActivity.this, TenantPersonalInformationActivity.class);
                 TenantDashboardActivity.this.startActivity(goPersonalInfo);
             }
         });

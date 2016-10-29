@@ -1,6 +1,7 @@
 package com.example.jerome.niche.activities;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -110,11 +111,17 @@ public class LandlordPersonalInformationActivity extends AppCompatActivity {
         int id = item.getItemId();
         if(id == R.id.editPersonalInfo){
             fh.setEditableTrue(fields);
+            for(TextView field : fields){
+                field.setTextColor(Color.BLACK);
+            }
         }
         if(id == R.id.savePersonalInfo){
             UpdateLandlordInformation uli = new UpdateLandlordInformation(this, userID);
             uli.execute(Settings.URL_ADDRESS_UPDATE_LANDLORD_INFORMATION);
             fh.setEditableFalse(fields);
+            for(TextView field : fields){
+                field.setTextColor(Color.GRAY);
+            }
         }
         return super.onOptionsItemSelected(item);
     }

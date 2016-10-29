@@ -28,5 +28,7 @@ public interface Settings {
     String URL_ADDRESS_LOAD_ROOM_INFORMATION = "http://kappatid.co.nf/loadRoomInfo.php";
     String URL_ADDRESS_UPDATE_ROOM_INFORMATION = "http://kappatid.co.nf/updateRoomInformation.php";
     String URL_ADDRESS_DELETE_ROOM = "http://kappatid.co.nf/deleteRoom.php";
+    String URL_ADDRESS_LOAD_PROPERTY_MANAGER_INFORMATION = "http://kappatid.co.nf/loadPropertyManagerInfo.php";
+    String URL_ADDRESS_UPDATE_PROPERTY_MANAGER_INFORMATION = "http://kappatid.co.nf/updatePropertyManagerInfo.php";
 
 }

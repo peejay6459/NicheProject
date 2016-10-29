@@ -115,4 +115,8 @@ public class LandlordEditPropertyActivity extends AppCompatActivity {
         return propInfoJsonObject.toString();
     }
 
+    public void setTextColor(TextView... fields){
+        fields
+    }
+
 }

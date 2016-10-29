@@ -2,7 +2,7 @@ package com.example.jerome.niche.dao;
 
 import android.os.AsyncTask;
 
-import com.example.jerome.niche.activities.TenantProfileActivity;
+import com.example.jerome.niche.activities.TenantPersonalInformationActivity;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -17,17 +17,12 @@ import java.net.URLEncoder;
  */
 
 public class UpdateTenantInformation extends AsyncTask <String, Void, Void> {
-    private TenantProfileActivity tpa;
+    private TenantPersonalInformationActivity tpa;
     private String tenantID;
 
-    public UpdateTenantInformation(TenantProfileActivity tpa, String tenantID){
+    public UpdateTenantInformation(TenantPersonalInformationActivity tpa, String tenantID){
         this.tpa = tpa;
         this.tenantID = tenantID;
-    }
-
-    @Override
-    protected void onPreExecute() {
-        super.onPreExecute();
     }
 
     @Override

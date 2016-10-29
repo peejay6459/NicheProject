@@ -1,6 +1,7 @@
 package com.example.jerome.niche.activities;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
  * Created by Jerome on 21/10/2016.
  */
 
-public class TenantProfileActivity extends AppCompatActivity {
+public class TenantPersonalInformationActivity extends AppCompatActivity {
     private TextView editName;
     private TextView editDob;
     private TextView editPhone;
@@ -171,12 +172,18 @@ public class TenantProfileActivity extends AppCompatActivity {
         int id = item.getItemId();
         if(id == R.id.editPersonalInfo) {
             fh.setEditableTrue(fields);
+            for(TextView field : fields){
+                field.setTextColor(Color.BLACK);
+            }
             rdioMale.setClickable(true);
             rdioFemale.setClickable(true);
             Log.d("JSON ->", getTenantJsonObject());
 
         }else if(id == R.id.savePersonalInfo){
             fh.setEditableFalse(fields);
+            for(TextView field : fields){
+                field.setTextColor(Color.GRAY);
+            }
             rdioMale.setClickable(false);
             rdioFemale.setClickable(false);
             UpdateTenantInformation uti = new UpdateTenantInformation(this, userID);

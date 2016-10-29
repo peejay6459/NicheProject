@@ -107,32 +107,7 @@ public class LandlordCreateRoomActivity extends AppCompatActivity {
         });
     }
 
-    public boolean validateFields(){
-        boolean isFilledUp = false;
-        if(!(tvRoomPrice.getText().toString().equals("Price per (week/fortnight/month)"))
-                && !(tvRoomPrice.getText().toString().isEmpty())){
-            if(!(spinTenantCount.getSelectedItem().toString().equals("Occupancy"))){
-                if(rdioAlarmYes.isChecked() || rdioAlarmNo.isChecked()){
-                    if((rdioPetsYes.isChecked()) || (rdioPetsNo.isChecked()) || (rdioPetsNeg.isChecked())){
-                        if(rdioSmokersYes.isChecked() || rdioSmokersNo.isChecked()){
-                            isFilledUp = true;
-                        }else{
-                            Toast.makeText(LandlordCreateRoomActivity.this, "Please choose if Smokers are allowed", Toast.LENGTH_SHORT).show();
-                        }
-                    }else{
-                        Toast.makeText(LandlordCreateRoomActivity.this, "Please choose if Pets are allowed", Toast.LENGTH_SHORT).show();
-                    }
-                }else{
-                    Toast.makeText(LandlordCreateRoomActivity.this, "Please select Smoke Alarm status", Toast.LENGTH_SHORT).show();
-                }
-            }else{
-                Toast.makeText(LandlordCreateRoomActivity.this, "Please select Occupancy", Toast.LENGTH_SHORT).show();
-            }
-        }else{
-            Toast.makeText(LandlordCreateRoomActivity.this, "Please give a price for this room", Toast.LENGTH_SHORT).show();
-        }
-        return isFilledUp;
-    }
+
     public String getRoomDetailsJsonObject(){
         roomDetails = new JSONObject();
         try{
@@ -168,5 +143,32 @@ public class LandlordCreateRoomActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return roomDetails.toString();
+    }
+
+    public boolean validateFields(){
+        boolean isFilledUp = false;
+        if(!(tvRoomPrice.getText().toString().equals("Price per (week/fortnight/month)"))
+                && !(tvRoomPrice.getText().toString().isEmpty())){
+            if(!(spinTenantCount.getSelectedItem().toString().equals("Occupancy"))){
+                if(rdioAlarmYes.isChecked() || rdioAlarmNo.isChecked()){
+                    if((rdioPetsYes.isChecked()) || (rdioPetsNo.isChecked()) || (rdioPetsNeg.isChecked())){
+                        if(rdioSmokersYes.isChecked() || rdioSmokersNo.isChecked()){
+                            isFilledUp = true;
+                        }else{
+                            Toast.makeText(LandlordCreateRoomActivity.this, "Please choose if Smokers are allowed", Toast.LENGTH_SHORT).show();
+                        }
+                    }else{
+                        Toast.makeText(LandlordCreateRoomActivity.this, "Please choose if Pets are allowed", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(LandlordCreateRoomActivity.this, "Please select Smoke Alarm status", Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                Toast.makeText(LandlordCreateRoomActivity.this, "Please select Occupancy", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(LandlordCreateRoomActivity.this, "Please give a price for this room", Toast.LENGTH_SHORT).show();
+        }
+        return isFilledUp;
     }
 }

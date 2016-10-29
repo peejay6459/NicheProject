@@ -52,7 +52,6 @@ public class LoadRoomInformation extends AsyncTask<String, String, Void> {
 
             String passAddress = URLEncoder.encode("address", "UTF-8");
             passAddress += "=" + URLEncoder.encode(address, "UTF-8");
-            Log.d("Addressssssssssssssss", address);
 
             con.setDoOutput(true);
             OutputStreamWriter os = new OutputStreamWriter(con.getOutputStream());

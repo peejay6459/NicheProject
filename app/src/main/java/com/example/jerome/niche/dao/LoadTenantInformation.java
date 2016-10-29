@@ -1,14 +1,12 @@
 package com.example.jerome.niche.dao;
 
 import android.app.ProgressDialog;
-import android.graphics.Color;
 import android.os.AsyncTask;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-import com.example.jerome.niche.activities.TenantProfileActivity;
+import com.example.jerome.niche.activities.TenantPersonalInformationActivity;
 import com.example.jerome.niche.classes.Tenant;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -26,12 +24,12 @@ import java.net.URLEncoder;
 public class LoadTenantInformation extends AsyncTask<String, String, Tenant> {
 
     private TextView[] tenantField;
-    private TenantProfileActivity tpa;
+    private TenantPersonalInformationActivity tpa;
     private ProgressDialog pd;
     private String tenantID;
     private RadioButton rdioMale;
     private RadioButton rdioFemale;
-    public LoadTenantInformation(TenantProfileActivity tpa, String tenantID, RadioButton rdioMale, RadioButton rdioFemale, TextView... tenantField){
+    public LoadTenantInformation(TenantPersonalInformationActivity tpa, String tenantID, RadioButton rdioMale, RadioButton rdioFemale, TextView... tenantField){
         this.tpa = tpa;
         this.tenantID = tenantID;
         this.rdioMale = rdioMale;
@@ -106,52 +104,32 @@ public class LoadTenantInformation extends AsyncTask<String, String, Tenant> {
 
     public void setInformation(String... values){
         tenantField[0].setText(values[1]);
-        //tenantField[0].setTextColor(Color.BLACK);
         if(values[2].equals("Male")){
             rdioMale.setChecked(true);
             rdioFemale.setChecked(false);
-            //rdioMale.setTextColor(Color.BLACK);
         }else if(values[2].equals("Female")){
             rdioFemale.setChecked(true);
             rdioMale.setChecked(false);
-            //rdioFemale.setTextColor(Color.BLACK);
         }
         tenantField[1].setText(values[3]);
-        //tenantField[1].setTextColor(Color.BLACK);
         tenantField[2].setText(values[4]);
-        //tenantField[2].setTextColor(Color.BLACK);
         tenantField[3].setText(values[5]);
-        //tenantField[3].setTextColor(Color.BLACK);
         tenantField[4].setText(values[6]);
-        //tenantField[4].setTextColor(Color.BLACK);
         tenantField[5].setText(values[7]);
-        //tenantField[5].setTextColor(Color.BLACK);
         tenantField[6].setText(values[8]);
-        //tenantField[6].setTextColor(Color.BLACK);
         tenantField[7].setText(values[9]);
-        //tenantField[7].setTextColor(Color.BLACK);
         tenantField[8].setText(values[10]);
-        //tenantField[8].setTextColor(Color.BLACK);
         tenantField[9].setText(values[11]);
-        //tenantField[9].setTextColor(Color.BLACK);
         tenantField[10].setText(values[12]);
-        //tenantField[10].setTextColor(Color.BLACK);
         tenantField[11].setText(values[13]);
-        //tenantField[11].setTextColor(Color.BLACK);
         tenantField[12].setText(values[14]);
-        //tenantField[12].setTextColor(Color.BLACK);
         tenantField[13].setText(values[15]);
-        //tenantField[13].setTextColor(Color.BLACK);
         tenantField[14].setText(values[16]);
-        //tenantField[14].setTextColor(Color.BLACK);
         tenantField[15].setText(values[17]);
-        //tenantField[15].setTextColor(Color.BLACK);
         tenantField[16].setText(values[18]);
-        //tenantField[16].setTextColor(Color.BLACK);
         tenantField[17].setText(values[19]);
-        //tenantField[17].setTextColor(Color.BLACK);
         tenantField[18].setText(values[20]);
-        //tenantField[18].setTextColor(Color.BLACK);
+
     }
 
 }

@@ -3,7 +3,7 @@ package com.example.jerome.niche.dao;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.jerome.niche.activities.LandlordPersonalInformationActivity;
+import com.example.jerome.niche.activities.PropertyManagerPersonalInformationActivity;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -14,32 +14,30 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 
 /**
- * Created by Jerome on 28/10/2016.
+ * Created by Jerome on 30/10/2016.
  */
 
-public class UpdateLandlordInformation extends AsyncTask<String, Void, Void> {
-    private LandlordPersonalInformationActivity lpia;
-    private String landlordID;
+public class UpdatePropertyManagerInformation extends AsyncTask<String, Void, Void> {
+    PropertyManagerPersonalInformationActivity pmpi;
+    String propertyManagerID;
 
-    public UpdateLandlordInformation(LandlordPersonalInformationActivity lpia, String landlordID){
-        this.lpia = lpia;
-        this.landlordID = landlordID;
+    public UpdatePropertyManagerInformation(PropertyManagerPersonalInformationActivity pmpi, String propertyManagerID){
+        this.pmpi = pmpi;
+        this.propertyManagerID = propertyManagerID;
     }
-
     @Override
     protected Void doInBackground(String... params) {
         try {
             URL url = new URL(params[0]);
             URLConnection con = url.openConnection();
-            String sendLandlordID = URLEncoder.encode("landlordID", "UTF-8");
-            sendLandlordID += "=" + URLEncoder.encode(landlordID, "UTF-8");
-            String alterLandlord = URLEncoder.encode("landlordObject", "UTF-8");
-            alterLandlord += "=" + URLEncoder.encode(lpia.getLandlordJsonObject(), "UTF-8");
-            Log.d("landlordID", landlordID);
+            String passPropertyManagerID = URLEncoder.encode("propertyManagerID", "UTF-8");
+            passPropertyManagerID += "=" + URLEncoder.encode(propertyManagerID, "UTF-8");
+            String alterPropertyManager = URLEncoder.encode("propertyManagerObject", "UTF-8");
+            alterPropertyManager += "=" + URLEncoder.encode(pmpi.getLandlordJsonObject(), "UTF-8");
 
             con.setDoOutput(true);
             OutputStreamWriter os = new OutputStreamWriter(con.getOutputStream());
-            os.write(sendLandlordID + "&" + alterLandlord);
+            os.write(passPropertyManagerID + "&" + alterPropertyManager);
             os.flush();
             con.getInputStream();
 
