@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -14,24 +16,31 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 
 /**
- * Created by Jerome on 27/10/2016.
+ * Created by Jerome on 29/10/2016.
  */
 
-public class LoadPropertyInfo extends AsyncTask<String, String, Void> {
-
+public class LoadRoomInformation extends AsyncTask<String, String, Void> {
+    public interface AsyncResponse{
+        void processFinish(String[] roomDetails);
+    }
+    private AsyncResponse delegate;
     private Context context;
-    private TextView[] propertyInfo;
-    private int rowNum;
-    private String userID;
-    public LoadPropertyInfo(Context context, int rowNum, String userID, TextView... propertyInfo){
+    private String address;
+    private int roomNum;
+    private ProgressDialog pd;
+    private String[] roomDetails;
+    public LoadRoomInformation(AsyncResponse delegate, Context context, String address, int roomNum){
+        this.delegate = delegate;
         this.context = context;
-        this.rowNum = rowNum;
-        this.userID = userID;
-        this.propertyInfo = propertyInfo;
-
+        this.address = address;
+        this.roomNum = roomNum;
     }
     @Override
     protected void onPreExecute() {
+        pd = new ProgressDialog(context);
+        pd.setTitle("Loading Records");
+        pd.setMessage("Please wait");
+        pd.show();
         super.onPreExecute();
     }
 
@@ -41,40 +50,36 @@ public class LoadPropertyInfo extends AsyncTask<String, String, Void> {
             URL url = new URL(params[0]);
             URLConnection con = url.openConnection();
 
-            String passUserID = URLEncoder.encode("userID", "UTF-8");
-            passUserID += "=" + URLEncoder.encode(userID, "UTF-8");
+            String passAddress = URLEncoder.encode("address", "UTF-8");
+            passAddress += "=" + URLEncoder.encode(address, "UTF-8");
+            Log.d("Addressssssssssssssss", address);
 
             con.setDoOutput(true);
             OutputStreamWriter os = new OutputStreamWriter(con.getOutputStream());
-            os.write(passUserID);
+            os.write(passAddress);
             os.flush();
 
             BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
             String line;
             while((line = br.readLine()) != null){
-                String[] propertyDetails = line.split("_");
-                publishProgress(propertyDetails[rowNum]);
-
+                String[] roomDetails = line.split("_");
+                publishProgress(roomDetails[roomNum]);
             }
         }catch(Exception e){
             e.printStackTrace();
         }
-
         return null;
     }
 
     @Override
     protected void onProgressUpdate(String... values) {
-        String[] propertyDetails = values[0].split("-");
-        Log.d("propertyDetails", propertyDetails.toString());
-        propertyInfo[0].setText(propertyDetails[0]);
-        propertyInfo[1].setText(propertyDetails[1]);
-        propertyInfo[2].setText(propertyDetails[2]);
+        roomDetails = values[0].split("-");
         super.onProgressUpdate(values);
     }
 
     @Override
     protected void onPostExecute(Void aVoid) {
-        super.onPostExecute(aVoid);
+        pd.dismiss();
+        delegate.processFinish(roomDetails);
     }
 }

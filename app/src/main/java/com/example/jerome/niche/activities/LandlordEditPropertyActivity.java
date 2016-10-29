@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,8 +15,8 @@ import android.widget.Toast;
 import com.example.jerome.niche.R;
 import com.example.jerome.niche.classes.Settings;
 import com.example.jerome.niche.dao.DeleteProperty;
-import com.example.jerome.niche.dao.LoadPropertyInfo;
-import com.example.jerome.niche.dao.UpdatePropertyInfo;
+import com.example.jerome.niche.dao.LoadPropertyInformation;
+import com.example.jerome.niche.dao.UpdatePropertyInformation;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -54,7 +53,7 @@ public class LandlordEditPropertyActivity extends AppCompatActivity {
         tvEditSuburb.setEnabled(false);
         spinEditPropertyManager.setEnabled(false);
 
-        LoadPropertyInfo lpi = new LoadPropertyInfo(this, rowNum, userID, tvEditPropertyTitle, tvEditFlatStreet, tvEditSuburb);
+        LoadPropertyInformation lpi = new LoadPropertyInformation(this, rowNum, userID, tvEditPropertyTitle, tvEditFlatStreet, tvEditSuburb);
         lpi.execute(Settings.URL_ADDRESS_LOAD_PROPERTY_INFO);
     }
 
@@ -75,7 +74,7 @@ public class LandlordEditPropertyActivity extends AppCompatActivity {
         }
         if(id == R.id.savePropertyInfo){
             // do something
-            UpdatePropertyInfo upi = new UpdatePropertyInfo(userID, LandlordEditPropertyActivity.this);
+            UpdatePropertyInformation upi = new UpdatePropertyInformation(userID, LandlordEditPropertyActivity.this);
             upi.execute(Settings.URL_ADDRESS_UPDATE_PROPERTY_INFO);
             tvEditPropertyTitle.setEnabled(false);
             tvEditFlatStreet.setEnabled(false);

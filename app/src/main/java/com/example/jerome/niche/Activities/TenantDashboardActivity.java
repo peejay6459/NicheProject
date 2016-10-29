@@ -88,4 +88,5 @@ public class TenantDashboardActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

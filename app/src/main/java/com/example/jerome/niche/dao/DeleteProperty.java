@@ -22,10 +22,6 @@ public class DeleteProperty extends AsyncTask<String, Void, Void> {
         this.lepa = lepa;
         this.userID = userID;
     }
-    @Override
-    protected void onPreExecute() {
-        super.onPreExecute();
-    }
 
     @Override
     protected Void doInBackground(String... params) {
@@ -49,16 +45,6 @@ public class DeleteProperty extends AsyncTask<String, Void, Void> {
             e.printStackTrace();
         }
         return null;
-    }
-
-    @Override
-    protected void onProgressUpdate(Void... values) {
-        super.onProgressUpdate(values);
-    }
-
-    @Override
-    protected void onPostExecute(Void aVoid) {
-        super.onPostExecute(aVoid);
     }
 
 }

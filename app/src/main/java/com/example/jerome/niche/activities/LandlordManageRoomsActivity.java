@@ -1,7 +1,5 @@
 package com.example.jerome.niche.activities;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,10 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.jerome.niche.R;
-import com.example.jerome.niche.classes.PropertiesCustomAdapter;
 import com.example.jerome.niche.classes.RoomCustomAdapter;
 import com.example.jerome.niche.classes.Settings;
-import com.example.jerome.niche.dao.LoadPropertyInfo;
 import com.example.jerome.niche.dao.LoadRooms;
 import com.example.jerome.niche.dao.ValidatePropertyDetails;
 

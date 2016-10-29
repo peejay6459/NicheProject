@@ -3,7 +3,6 @@ package com.example.jerome.niche.activities;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -83,30 +82,57 @@ public class LandlordCreateRoomActivity extends AppCompatActivity {
         tvSuburb.setText(address2);
         tvSuburb.setEnabled(false);
 
-
-        fh.changeTextField(tvRoomPrice, tvFlatStreet, tvSuburb, "Price per (week/fortnight/month)", "Flat # and Street", "Suburb and City");
+        fh.changeTextField(tvRoomPrice, tvSpecificDetails, tvFurnishing, tvUtilities, tvAvailableDate,
+                "Price per (week/fortnight/month)", "About the room", "(e.g. Fridge, Stove etc)", "(eg. Electricities, Internet, Water)", "DD MM YYYY");
+        fh.changeTextField(tvAvailableDate, tvRoomPrice, tvSpecificDetails, tvFurnishing, tvUtilities,
+                "DD MM YYYY", "Price per (week/fortnight/month)", "About the room", "(e.g. Fridge, Stove etc)", "(eg. Electricities, Internet, Water)");
+        fh.changeTextField(tvUtilities, tvAvailableDate, tvRoomPrice, tvSpecificDetails, tvFurnishing,
+                "(eg. Electricities, Internet, Water)", "DD MM YYYY", "Price per (week/fortnight/month)", "About the room", "(e.g. Fridge, Stove etc)");
+        fh.changeTextField(tvFurnishing, tvUtilities, tvAvailableDate, tvRoomPrice, tvSpecificDetails,
+                "(e.g. Fridge, Stove etc)", "(eg. Electricities, Internet, Water)", "DD MM YYYY", "Price per (week/fortnight/month)", "About the room");
+        fh.changeTextField(tvSpecificDetails, tvFurnishing, tvUtilities, tvAvailableDate, tvRoomPrice,
+                "About the room", "(e.g. Fridge, Stove etc)", "(eg. Electricities, Internet, Water)", "DD MM YYYY", "Price per (week/fortnight/month)");
 
         btnAddRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!(tvRoomPrice.getText().toString().equals("Price per (week/fortnight/month)"))
-                        && !(tvRoomPrice.getText().toString().isEmpty())){
-                    if(!(spinTenantCount.getSelectedItem().toString().equals("Occupancy"))){
-                        InsertRoom ir = new InsertRoom(LandlordCreateRoomActivity.this);
-                        ir.execute(Settings.URL_ADDRESS_INSERT_ROOM);
-                        Intent backManageRooms = new Intent(LandlordCreateRoomActivity.this, LandlordManageRoomsActivity.class);
-                        LandlordCreateRoomActivity.this.startActivity(backManageRooms);
-                        Toast.makeText(LandlordCreateRoomActivity.this, "Room created successfully", Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(LandlordCreateRoomActivity.this, "Please select Occupancy", Toast.LENGTH_SHORT).show();
-                    }
-                }else{
-                    Toast.makeText(LandlordCreateRoomActivity.this, "Please give a price for this room", Toast.LENGTH_SHORT).show();
+                if(validateFields()){
+                    InsertRoom ir = new InsertRoom(LandlordCreateRoomActivity.this);
+                    ir.execute(Settings.URL_ADDRESS_INSERT_ROOM);
+                    Intent backManageRooms = new Intent(LandlordCreateRoomActivity.this, LandlordManageRoomsActivity.class);
+                    LandlordCreateRoomActivity.this.startActivity(backManageRooms);
+                    Toast.makeText(LandlordCreateRoomActivity.this, "Room created successfully", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
+    public boolean validateFields(){
+        boolean isFilledUp = false;
+        if(!(tvRoomPrice.getText().toString().equals("Price per (week/fortnight/month)"))
+                && !(tvRoomPrice.getText().toString().isEmpty())){
+            if(!(spinTenantCount.getSelectedItem().toString().equals("Occupancy"))){
+                if(rdioAlarmYes.isChecked() || rdioAlarmNo.isChecked()){
+                    if((rdioPetsYes.isChecked()) || (rdioPetsNo.isChecked()) || (rdioPetsNeg.isChecked())){
+                        if(rdioSmokersYes.isChecked() || rdioSmokersNo.isChecked()){
+                            isFilledUp = true;
+                        }else{
+                            Toast.makeText(LandlordCreateRoomActivity.this, "Please choose if Smokers are allowed", Toast.LENGTH_SHORT).show();
+                        }
+                    }else{
+                        Toast.makeText(LandlordCreateRoomActivity.this, "Please choose if Pets are allowed", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(LandlordCreateRoomActivity.this, "Please select Smoke Alarm status", Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                Toast.makeText(LandlordCreateRoomActivity.this, "Please select Occupancy", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(LandlordCreateRoomActivity.this, "Please give a price for this room", Toast.LENGTH_SHORT).show();
+        }
+        return isFilledUp;
+    }
     public String getRoomDetailsJsonObject(){
         roomDetails = new JSONObject();
         try{

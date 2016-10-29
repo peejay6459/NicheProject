@@ -23,6 +23,24 @@
                 android:id="@+id/imageView4"
                 android:background="@android:color/background_dark" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@android:color/black"/>
+            <TextView
+                android:text="Price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView11"
+                android:textSize="18sp"
+                android:textColor="@android:color/background_dark"
+                android:layout_marginLeft="7dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@android:color/black"/>
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -149,7 +167,7 @@
                 android:layout_marginBottom="5dp">
 
                 <TextView
-                    android:text="Parking"
+                    android:text="Parking(s)"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView23"
@@ -223,7 +241,10 @@
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:ems="10"
-                android:id="@+id/tvSpecificDetails" />
+                android:id="@+id/tvSpecificDetails"
+                android:text="About the room"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp" />
 
             <TextView
                 android:text="Furnishings and Whiteware provided:"
@@ -241,10 +262,13 @@
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:ems="10"
-                android:id="@+id/tvFurnishing" />
+                android:id="@+id/tvFurnishing"
+                android:textSize="14sp"
+                android:textColor="@android:color/darker_gray"
+                android:text="(e.g. Fridge, Stove etc)" />
 
             <TextView
-                android:text="What's included (eg. Electricities, Internet, Water):"
+                android:text="What's included"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView29"
@@ -259,7 +283,10 @@
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:ems="10"
-                android:id="@+id/tvUtilities" />
+                android:id="@+id/tvUtilities"
+                android:text="(eg. Electricities, Internet, Water)"
+                android:textSize="14sp"
+                android:textColor="@android:color/darker_gray" />
 
             <View
                 android:layout_width="match_parent"
@@ -303,7 +330,8 @@
                     android:id="@+id/tvAvailableDate"
                     android:layout_weight="1"
                     android:textColor="@android:color/darker_gray"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:text="DD MM YYYY" />
             </LinearLayout>
 
             <Spinner

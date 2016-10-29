@@ -113,7 +113,12 @@
 
 
         </activity>
-        <activity android:name=".activities.LandlordEditRoomActivity"/>
+        <activity android:name=".activities.LandlordEditRoomActivity"
+            android:parentActivityName=".activities.LandlordManageRoomsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.LandlordManageRoomsActivity" />
+        </activity>
 
     </application>
 

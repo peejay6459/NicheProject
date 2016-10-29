@@ -18,16 +18,12 @@ import java.net.URLEncoder;
  * Created by Jerome on 27/10/2016.
  */
 
-public class UpdatePropertyInfo extends AsyncTask<String, Void, Void> {
+public class UpdatePropertyInformation extends AsyncTask<String, Void, Void> {
     private LandlordEditPropertyActivity lepa;
     private String userID;
-    public UpdatePropertyInfo(String userID, LandlordEditPropertyActivity lepa){
+    public UpdatePropertyInformation(String userID, LandlordEditPropertyActivity lepa){
         this.lepa = lepa;
         this.userID = userID;
-    }
-    @Override
-    protected void onPreExecute() {
-        super.onPreExecute();
     }
 
     @Override
@@ -54,13 +50,4 @@ public class UpdatePropertyInfo extends AsyncTask<String, Void, Void> {
         return null;
     }
 
-    @Override
-    protected void onProgressUpdate(Void... values) {
-        super.onProgressUpdate(values);
-    }
-
-    @Override
-    protected void onPostExecute(Void aVoid) {
-        super.onPostExecute(aVoid);
-    }
 }

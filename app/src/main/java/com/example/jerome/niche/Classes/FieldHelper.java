@@ -95,6 +95,30 @@ public class FieldHelper extends Helpers {
             });
         }
 
+    @Override
+    public void changeTextField(final TextView firstTv, final TextView secondTv, final TextView thirdTv, final TextView fourthTv, final TextView fifthTv, final String... params) {
+        firstTv.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(firstTv.getText().toString().equals(params[0])){
+                    firstTv.setText("");
+                }
+                if(secondTv.getText().toString().isEmpty()){
+                    secondTv.setText(params[1]);
+                }
+                if(thirdTv.getText().toString().isEmpty()){
+                    thirdTv.setText(params[2]);
+                }
+                if(fourthTv.getText().toString().isEmpty()){
+                    fourthTv.setText(params[3]);
+                }
+                if(fifthTv.getText().toString().isEmpty()){
+                    fifthTv.setText(params[4]);
+                }
+            }
+        });
+    }
+
     /**
      * change field with 2 edit fields that needs to convert the inputType @username, @password
      *
