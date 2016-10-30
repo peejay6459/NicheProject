@@ -34,7 +34,6 @@ public class LandlordManagePropertiesActivity extends AppCompatActivity implemen
 
         ArrayList<String> address1 = new ArrayList<>();
         ArrayList<String> address2 = new ArrayList<>();
-        //ArrayList<String> propertyManger = new ArrayList<>();
 
         LoadProperties lp = new LoadProperties(this, this, address2, address1, userID);
         lp.execute(Settings.URL_ADDRESS_LOAD_PROPERTIES);

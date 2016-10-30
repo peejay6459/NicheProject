@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -170,11 +171,17 @@ public class LandlordEditRoomActivity extends AppCompatActivity implements LoadR
             for(Spinner spin : spinners){
                 spin.setEnabled(true);
             }
+            for(TextView field : fields){
+                field.setTextColor(Color.BLACK);
+            }
         }
         if(id == R.id.savePropertyInfo){
             fh.setEditableFalse(fields);
             for(Spinner spin : spinners){
                 spin.setEnabled(false);
+            }
+            for(TextView field : fields){
+                field.setTextColor(Color.GRAY);
             }
             SharedPreferences pref1 = getSharedPreferences("ROOM_ID", MODE_PRIVATE);
             roomID = pref1.getInt("roomID", 0);

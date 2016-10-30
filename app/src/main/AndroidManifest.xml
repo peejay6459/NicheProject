@@ -3,6 +3,7 @@
     package="com.example.jerome.niche">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -98,19 +99,30 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.PropertyManagerDashboardActivity" />
         </activity>
-        <activity android:name=".activities.LandlordCreatePropertyActivity"/>
+        <activity android:name=".activities.LandlordCreatePropertyActivity"
+            android:parentActivityName=".activities.LandlordManagePropertiesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.LandlordManagePropertiesActivity" />
+        </activity>
+
         <activity android:name=".activities.LandlordManageRoomsActivity"
             android:parentActivityName=".activities.LandlordManagePropertiesActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.LandlordManagePropertiesActivity" />
         </activity>
-        <activity android:name=".activities.LandlordEditPropertyActivity">
-
-
+        <activity android:name=".activities.LandlordEditPropertyActivity"
+            android:parentActivityName=".activities.LandlordManageRoomsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.LandlordManagePropertiesActivity" />
         </activity>
-        <activity android:name=".activities.LandlordCreateRoomActivity">
-
+        <activity android:name=".activities.LandlordCreateRoomActivity"
+            android:parentActivityName=".activities.LandlordManageRoomsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.LandlordManagePropertiesActivity" />
 
         </activity>
         <activity android:name=".activities.LandlordEditRoomActivity"

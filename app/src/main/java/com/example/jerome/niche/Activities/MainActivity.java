@@ -122,10 +122,12 @@ public class MainActivity extends AppCompatActivity implements Settings, Validat
     }
 
     @Override
-    public void processFinish(String userID) {
+    public void processFinish(String userID, String username, String userType) {
 
         SharedPreferences.Editor editor = getSharedPreferences("USER_ID", MODE_PRIVATE).edit();
         editor.putString("userID", userID);
+        editor.putString("username", username);
+        editor.putString("userType", userType);
         editor.apply();
     }
 }

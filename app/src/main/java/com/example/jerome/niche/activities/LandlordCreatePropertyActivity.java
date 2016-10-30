@@ -23,7 +23,7 @@ import org.json.JSONObject;
  * Created by Jerome on 25/10/2016.
  */
 
-public class LandlordCreatePropertyActivity extends AppCompatActivity {
+public class LandlordCreatePropertyActivity extends AppCompatActivity implements InsertProperty.AsyncResponse{
     private TextView tvPropertyTitle;
     private TextView tvFlatStreet;
     private TextView tvSuburb;
@@ -59,11 +59,8 @@ public class LandlordCreatePropertyActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(validateFields(tvPropertyTitle, tvFlatStreet, tvSuburb)){
                     Log.d("JSON create property", getPropertyJsonObject());
-                    InsertProperty ip = new InsertProperty(LandlordCreatePropertyActivity.this);
+                    InsertProperty ip = new InsertProperty(LandlordCreatePropertyActivity.this, LandlordCreatePropertyActivity.this);
                     ip.execute(Settings.URL_ADDRESS_INSERT_PROPERTIES);
-                    Toast.makeText(LandlordCreatePropertyActivity.this, "Property Created Successfully", Toast.LENGTH_SHORT).show();
-                    Intent goBackManageProperties = new Intent(LandlordCreatePropertyActivity.this, LandlordManagePropertiesActivity.class);
-                    LandlordCreatePropertyActivity.this.startActivity(goBackManageProperties);
                 }
             }
         });
@@ -102,5 +99,16 @@ public class LandlordCreatePropertyActivity extends AppCompatActivity {
             Toast.makeText(LandlordCreatePropertyActivity.this, "Please fill out the required forms", Toast.LENGTH_SHORT).show();
         }
         return isValidated;
+    }
+
+    @Override
+    public void processFinish(String response) {
+        if(response.equals("already exist")){
+            Toast.makeText(LandlordCreatePropertyActivity.this, "Address already exist", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(LandlordCreatePropertyActivity.this, "Property Created Successfully", Toast.LENGTH_SHORT).show();
+            Intent goBackManageProperties = new Intent(LandlordCreatePropertyActivity.this, LandlordManagePropertiesActivity.class);
+            LandlordCreatePropertyActivity.this.startActivity(goBackManageProperties);
+        }
     }
 }

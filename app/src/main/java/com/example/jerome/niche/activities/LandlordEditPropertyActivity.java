@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -71,6 +72,7 @@ public class LandlordEditPropertyActivity extends AppCompatActivity {
             tvEditFlatStreet.setEnabled(true);
             tvEditSuburb.setEnabled(true);
             spinEditPropertyManager.setEnabled(true);
+            setTextColorBlack(tvEditPropertyTitle, tvEditFlatStreet, tvEditSuburb);
         }
         if(id == R.id.savePropertyInfo){
             // do something
@@ -80,6 +82,7 @@ public class LandlordEditPropertyActivity extends AppCompatActivity {
             tvEditFlatStreet.setEnabled(false);
             tvEditSuburb.setEnabled(false);
             spinEditPropertyManager.setEnabled(false);
+            setTextColorGray(tvEditPropertyTitle, tvEditFlatStreet, tvEditSuburb);
 
         }
         if(id == R.id.deleteProperty){
@@ -115,8 +118,15 @@ public class LandlordEditPropertyActivity extends AppCompatActivity {
         return propInfoJsonObject.toString();
     }
 
-    public void setTextColor(TextView... fields){
-        fields
+    public void setTextColorBlack(TextView... fields){
+        for(TextView field : fields){
+            field.setTextColor(Color.BLACK);
+        }
+    }
+    public void setTextColorGray(TextView... fields){
+        for(TextView field : fields){
+            field.setTextColor(Color.GRAY);
+        }
     }
 
 }

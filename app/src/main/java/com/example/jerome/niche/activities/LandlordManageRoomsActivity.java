@@ -26,9 +26,10 @@ import java.util.ArrayList;
 
 public class LandlordManageRoomsActivity extends AppCompatActivity implements ValidatePropertyDetails.AsyncResponse, LoadRooms.AsyncResponse {
 
-    String userID;
-    String propAddress;
-    int rowNum;
+    private String userID;
+    private String userType;
+    private String username;
+    private int rowNum;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +39,8 @@ public class LandlordManageRoomsActivity extends AppCompatActivity implements Va
         SharedPreferences pref = getSharedPreferences("USER_ID", MODE_PRIVATE);
         userID = pref.getString("userID", "");
         rowNum = pref.getInt("rowNum", 0);
+        userType = pref.getString("userType", "");
+        username = pref.getString("username", "");
 
         ValidatePropertyDetails vpd = new ValidatePropertyDetails(this, rowNum, userID, this);
         vpd.execute(Settings.URL_ADDRESS_LOAD_PROPERTY_INFO);
@@ -77,7 +80,7 @@ public class LandlordManageRoomsActivity extends AppCompatActivity implements Va
         ArrayList<String> roomPrice = new ArrayList<>();
         ArrayList<String> roomOccupancy = new ArrayList<>();
 
-        LoadRooms lr = new LoadRooms(this, this, roomPrice, roomOccupancy, address[0]);
+        LoadRooms lr = new LoadRooms(this, this, roomPrice, roomOccupancy, address[0], userType, username);
         lr.execute(Settings.URL_ADDRESS_LOAD_ROOMS);
     }
 

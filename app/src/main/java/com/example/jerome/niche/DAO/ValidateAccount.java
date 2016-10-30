@@ -29,7 +29,7 @@ import java.net.URLEncoder;
 
 public class ValidateAccount extends AsyncTask<String, String, Void> {
     public interface AsyncResponse{
-        void processFinish(String userID);
+        void processFinish(String userID, String username, String userType);
     }
 
     private AsyncResponse delegate = null;
@@ -38,6 +38,8 @@ public class ValidateAccount extends AsyncTask<String, String, Void> {
     private NicheUser nUser;
     private ProgressDialog pd;
     private String userID;
+    private String username;
+    private String userType;
 
     public ValidateAccount(Context context, AsyncResponse delegate, MainActivity main, NicheUser nUser){
         this.context = context;
@@ -128,6 +130,8 @@ public class ValidateAccount extends AsyncTask<String, String, Void> {
             Toast.makeText(main, "Invalid username/password", Toast.LENGTH_SHORT).show();
         }
         userID = accountDetails[0];
+        username = accountDetails[1];
+        userType = accountDetails[4];
         //NicheUser nUser = new NicheUser(Integer.parseInt(accountDetails[0]));
         //TenantPersonalInformationActivity tpa = new TenantPersonalInformationActivity(nUser);
 
@@ -138,7 +142,7 @@ public class ValidateAccount extends AsyncTask<String, String, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         pd.dismiss();
-        delegate.processFinish(userID);
+        delegate.processFinish(userID, username, userType);
     }
     private void showError(String[] accountDetails){
         if(accountDetails[4].equals("Tenant")) {

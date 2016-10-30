@@ -5,6 +5,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.jerome.niche.classes.Settings;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -28,13 +30,16 @@ public class LoadRooms extends AsyncTask<String, String, Void> {
     private ArrayList<String> occupancy;
     private String propAddress;
     private ProgressDialog pd;
-    public LoadRooms(Context context, AsyncResponse delegate, ArrayList<String> price, ArrayList<String> occupancy, String propAddress){
+    private String userType;
+    private String username;
+    public LoadRooms(Context context, AsyncResponse delegate, ArrayList<String> price, ArrayList<String> occupancy, String propAddress, String userType, String username){
         this.context = context;
         this.delegate = delegate;
         this.price = price;
         this.occupancy = occupancy;
         this.propAddress = propAddress;
-
+        this.userType = userType;
+        this.username = username;
     }
 
     @Override
@@ -54,10 +59,15 @@ public class LoadRooms extends AsyncTask<String, String, Void> {
 
             String passPropAddress = URLEncoder.encode("propAddress", "UTF-8");
             passPropAddress += "=" + URLEncoder.encode(propAddress, "UTF-8");
+            String passUserType = URLEncoder.encode("userType", "UTF-8");
+            passUserType += "=" + URLEncoder.encode(userType, "UTF-8");
+            String passUsername = URLEncoder.encode("username", "UTF-8");
+            passUsername += "=" + URLEncoder.encode(username, "UTF-8");
+            Log.d("username", username);
 
             con.setDoOutput(true);
             OutputStreamWriter os = new OutputStreamWriter(con.getOutputStream());
-            os.write(passPropAddress);
+            os.write(passPropAddress + "&" + passUserType + "&" + passUsername);
             os.flush();
 
             BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -66,7 +76,6 @@ public class LoadRooms extends AsyncTask<String, String, Void> {
                 String[] rooms = line.split("_");
                 for(String room : rooms){
                     publishProgress(room);
-                    Log.d("ROOM ", room);
                 }
             }
 
@@ -79,7 +88,6 @@ public class LoadRooms extends AsyncTask<String, String, Void> {
     @Override
     protected void onProgressUpdate(String... values) {
         final String[] rooms = values[0].split("-");
-        Log.d("price: ", rooms[1]);
         price.add(String.valueOf(rooms[1]));
         occupancy.add(String.valueOf(rooms[2]));
         super.onProgressUpdate(values);
