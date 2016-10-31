@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -27,7 +28,7 @@ public class LoadPropertyManagerList extends AsyncTask<String, String, Void> {
     private ArrayList<String> managerName;
     private String landlordID;
     private ProgressDialog pd;
-    public LoadPropertyManagerList(Context context, AsyncResponse delegate, ArrayList<String> managerName, String landlordID){
+    public LoadPropertyManagerList(Context context, AsyncResponse delegate, ArrayList<String> managerName, String landlordID) {
         this.context = context;
         this.delegate = delegate;
         this.managerName = managerName;
@@ -38,7 +39,7 @@ public class LoadPropertyManagerList extends AsyncTask<String, String, Void> {
     @Override
     protected void onPreExecute() {
         pd = new ProgressDialog(context);
-        pd.setTitle("Loading Properties");
+        pd.setTitle("Loading Manager List");
         pd.setMessage("Please wait");
         pd.show();
         super.onPreExecute();
@@ -64,6 +65,7 @@ public class LoadPropertyManagerList extends AsyncTask<String, String, Void> {
                 String[] managerNames = line.split("_");
                 for(String name : managerNames){
                     publishProgress(name);
+                    Log.d("name", name);
                 }
             }
 
@@ -75,8 +77,7 @@ public class LoadPropertyManagerList extends AsyncTask<String, String, Void> {
 
     @Override
     protected void onProgressUpdate(String... values) {
-        final String[] managerNames = values[0].split("-");
-        managerName.add(managerNames[0]);
+        managerName.add(values[0]);
         super.onProgressUpdate(values);
     }
 

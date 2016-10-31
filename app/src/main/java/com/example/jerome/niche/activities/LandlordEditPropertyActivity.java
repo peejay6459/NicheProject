@@ -88,6 +88,7 @@ public class LandlordEditPropertyActivity extends AppCompatActivity {
         if(id == R.id.deleteProperty){
             new AlertDialog.Builder(this)
                     .setTitle("Delete Property")
+                    .setIcon(R.drawable.delete_icon)
                     .setMessage("Are you sure you want to delete this property?")
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         @Override

@@ -16,12 +16,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <ImageView
+            <ImageSwitcher
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/sample_room"
-                android:id="@+id/imageView4"
-                android:background="@android:color/background_dark" />
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/imageSwitcher"
+                android:background="@android:color/black" />
 
             <View
                 android:layout_width="match_parent"

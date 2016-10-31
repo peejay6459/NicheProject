@@ -6,17 +6,26 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageSwitcher;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewSwitcher;
 
 import com.example.jerome.niche.R;
 import com.example.jerome.niche.classes.FieldHelper;
+import com.example.jerome.niche.classes.RoomThread;
 import com.example.jerome.niche.classes.Settings;
 import com.example.jerome.niche.dao.DeleteProperty;
 import com.example.jerome.niche.dao.DeleteRoom;
@@ -58,6 +67,13 @@ public class LandlordEditRoomActivity extends AppCompatActivity implements LoadR
     private String address;
     private JSONObject roomDetails;
     private int roomID;
+    private ImageSwitcher imageSwitcher;
+    private Handler handler;
+    private int rooms[] = {R.drawable.room1, R.drawable.room2, R.drawable.room3, R.drawable.room4};
+    private int i = 0;
+    private boolean isAlive = true;
+    private RoomThread roomThread;
+    private int position = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +84,9 @@ public class LandlordEditRoomActivity extends AppCompatActivity implements LoadR
         roomNum = pref.getInt("roomPos", 0);
         SharedPreferences pref1 = getSharedPreferences("propertyAddress", MODE_PRIVATE);
         address = pref1.getString("propertyAddress1", "");
+        handler = new Handler();
 
+        imageSwitcher = (ImageSwitcher) findViewById(R.id.imageSwitcher);
         tvRoomPrice = (TextView) findViewById(R.id.tvRoomPrice);
         tvFlatStreet = (TextView) findViewById(R.id.tvFlatStreet);
         tvSuburb = (TextView) findViewById(R.id.tvSuburb);
@@ -118,6 +136,45 @@ public class LandlordEditRoomActivity extends AppCompatActivity implements LoadR
         LoadRoomInformation lri = new LoadRoomInformation(this, this, address, roomNum);
         lri.execute(Settings.URL_ADDRESS_LOAD_ROOM_INFORMATION);
 
+        imageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
+            @Override
+            public View makeView() {
+                ImageView imageView = new ImageView(getApplicationContext());
+                imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+                imageView.setLayoutParams(new ImageSwitcher.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT));
+                return imageView;
+            }
+        });
+        Animation in = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.in);
+        Animation out = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.out);
+
+        imageSwitcher.setInAnimation(in);
+        imageSwitcher.setOutAnimation(out);
+
+        roomThread = new RoomThread(imageSwitcher, position, handler, rooms, isAlive);
+        roomThread.start();
+
+    }
+
+    @Override
+    protected void onPause() {
+        isAlive = false;
+        position = roomThread.getPosition();
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        isAlive = true;
+        roomThread.setPosition(position);
+        super.onPostResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        roomThread = null;
+        super.onDestroy();
     }
 
     public String getRoomDetailsJsonObject(){
@@ -193,6 +250,7 @@ public class LandlordEditRoomActivity extends AppCompatActivity implements LoadR
         if(id == R.id.deleteProperty){
             new AlertDialog.Builder(this)
                     .setTitle("Delete Room")
+                    .setIcon(R.drawable.delete_icon)
                     .setMessage("Are you sure you want to delete this room?")
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         @Override

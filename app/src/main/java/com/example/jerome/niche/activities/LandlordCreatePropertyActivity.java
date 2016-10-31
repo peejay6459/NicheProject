@@ -1,9 +1,12 @@
 package com.example.jerome.niche.activities;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +34,8 @@ public class LandlordCreatePropertyActivity extends AppCompatActivity implements
     private JSONObject propertyObject;
     private Spinner spinPropertyManager;
     private String userID;
+    private NotificationCompat.Builder notifCreateProperty;
+    private static final int UNIQUE_ID = 4231;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +46,9 @@ public class LandlordCreatePropertyActivity extends AppCompatActivity implements
 
         SharedPreferences pref = getSharedPreferences("USER_ID", MODE_PRIVATE);
         userID = pref.getString("userID", "");
+
+        notifCreateProperty = new NotificationCompat.Builder(this);
+        notifCreateProperty.setAutoCancel(true);
 
         tvPropertyTitle = (TextView) findViewById(R.id.tvPropertyTitle);
         tvFlatStreet = (TextView) findViewById(R.id.tvFlatStreet);
@@ -61,6 +69,20 @@ public class LandlordCreatePropertyActivity extends AppCompatActivity implements
                     Log.d("JSON create property", getPropertyJsonObject());
                     InsertProperty ip = new InsertProperty(LandlordCreatePropertyActivity.this, LandlordCreatePropertyActivity.this);
                     ip.execute(Settings.URL_ADDRESS_INSERT_PROPERTIES);
+
+                    notifCreateProperty.setSmallIcon(R.drawable.niche);
+                    notifCreateProperty.setTicker("Has been ticked");
+                    notifCreateProperty.setWhen(System.currentTimeMillis());
+                    notifCreateProperty.setContentTitle("Property Created");
+                    notifCreateProperty.setContentText("A new property has been published");
+
+                    Intent seeNotif = new Intent(LandlordCreatePropertyActivity.this, MainActivity.class);
+                    PendingIntent pendingIntent = PendingIntent.getActivity(LandlordCreatePropertyActivity.this, 0, seeNotif, PendingIntent.FLAG_UPDATE_CURRENT);
+                    notifCreateProperty.setContentIntent(pendingIntent);
+
+                    NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                    nm.notify(UNIQUE_ID, notifCreateProperty.build());
+
                 }
             }
         });

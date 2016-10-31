@@ -37,6 +37,7 @@ public class PropertyManagerPersonalInformationActivity extends AppCompatActivit
     private FieldHelper fh = new FieldHelper();
     private JSONObject propertyManagerInfo;
     private String userID;
+    private String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +46,7 @@ public class PropertyManagerPersonalInformationActivity extends AppCompatActivit
 
         SharedPreferences pref = getSharedPreferences("USER_ID", MODE_PRIVATE);
         userID = pref.getString("userID", "");
+        username = pref.getString("username", "");
 
         editName = (TextView) findViewById(R.id.editName);
         editDob = (TextView) findViewById(R.id.editDob);
@@ -116,7 +118,7 @@ public class PropertyManagerPersonalInformationActivity extends AppCompatActivit
             }
         }
         if(id == R.id.savePersonalInfo){
-            UpdatePropertyManagerInformation upmi = new UpdatePropertyManagerInformation(this, userID);
+            UpdatePropertyManagerInformation upmi = new UpdatePropertyManagerInformation(this, userID, username);
             upmi.execute(Settings.URL_ADDRESS_UPDATE_PROPERTY_MANAGER_INFORMATION);
             fh.setEditableFalse(fields);
             for(TextView field : fields){

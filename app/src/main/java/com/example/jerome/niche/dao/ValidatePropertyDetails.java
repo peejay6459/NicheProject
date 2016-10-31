@@ -29,11 +29,14 @@ public class ValidatePropertyDetails extends AsyncTask<String, String, Void> {
     private ProgressDialog pd;
     private String propertyAddress1;
     private String propertyAddress2;
-    public ValidatePropertyDetails(Context context, int rowNum, String userID, AsyncResponse delegate){
+    private TextView propertyManagerName;
+    private String managerName;
+    public ValidatePropertyDetails(Context context, int rowNum, String userID, AsyncResponse delegate, TextView propertyManagerName){
         this.context = context;
         this.rowNum = rowNum;
         this.userID = userID;
         this.delegate = delegate;
+        this.propertyManagerName = propertyManagerName;
     }
     @Override
     protected void onPreExecute() {
@@ -60,10 +63,32 @@ public class ValidatePropertyDetails extends AsyncTask<String, String, Void> {
 
             BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
             String line;
-            while((line = br.readLine()) != null){
+            while((line = br.readLine()) != null) {
                 String[] propertyDetails = line.split("_");
                 publishProgress(propertyDetails[rowNum]);
+
+                String[] details = propertyDetails[rowNum].split("-");
+                propertyAddress1 = details[1];
+                propertyAddress2 = details[2];
             }
+            try {
+                URL url1 = new URL(params[1]);
+                URLConnection con1 = url1.openConnection();
+                String passAddress = URLEncoder.encode("address", "UTF-8");
+                passAddress += "=" + URLEncoder.encode(propertyAddress1, "UTF-8");
+                con1.setDoOutput(true);
+                os = new OutputStreamWriter(con1.getOutputStream());
+                os.write(passAddress);
+                os.flush();
+                BufferedReader br1 = new BufferedReader(new InputStreamReader(con1.getInputStream()));
+                String line1;
+                line1 = br1.readLine();
+                String[] names = line1.split("_");
+                publishProgress(names);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -73,15 +98,14 @@ public class ValidatePropertyDetails extends AsyncTask<String, String, Void> {
 
     @Override
     protected void onProgressUpdate(String... values) {
-        String[] propertyDetails = values[0].split("-");
-        Log.d("propertyDetails", propertyDetails.toString());
-        propertyAddress1 = propertyDetails[1];
-        propertyAddress2 = propertyDetails[2];
+        managerName = values[0];
+
         super.onProgressUpdate(values);
     }
 
     @Override
     protected void onPostExecute(Void aVoid) {
+        propertyManagerName.setText(managerName);
         pd.dismiss();
         delegate.processFinish(propertyAddress1, propertyAddress2);
     }

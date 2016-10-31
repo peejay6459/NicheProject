@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.jerome.niche.R;
 import com.example.jerome.niche.activities.LandlordDashboardActivity;
 import com.example.jerome.niche.activities.MainActivity;
 import com.example.jerome.niche.activities.PropertyManagerDashboardActivity;
@@ -116,6 +117,7 @@ public class ValidateAccount extends AsyncTask<String, String, Void> {
         }else if((accountDetails[1].equals("null") && (accountDetails[2].equals("null")))){
             new AlertDialog.Builder(main)
                     .setTitle("No Records Found")
+                    .setIcon(R.drawable.ic_no_records_found)
                     .setMessage("Do you want to create a new account?")
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         @Override
@@ -132,8 +134,6 @@ public class ValidateAccount extends AsyncTask<String, String, Void> {
         userID = accountDetails[0];
         username = accountDetails[1];
         userType = accountDetails[4];
-        //NicheUser nUser = new NicheUser(Integer.parseInt(accountDetails[0]));
-        //TenantPersonalInformationActivity tpa = new TenantPersonalInformationActivity(nUser);
 
 
 

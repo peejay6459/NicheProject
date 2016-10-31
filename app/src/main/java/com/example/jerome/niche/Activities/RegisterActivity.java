@@ -114,7 +114,6 @@ public class RegisterActivity extends AppCompatActivity implements InsertAccount
             }
         });
 
-
     }
 
     @Override
@@ -125,7 +124,7 @@ public class RegisterActivity extends AppCompatActivity implements InsertAccount
         }else{
             Intent goMainActivity = new Intent(RegisterActivity.this, MainActivity.class);
             RegisterActivity.this.startActivity(goMainActivity);
-            Toast.makeText(RegisterActivity.this, "Inserted Successfully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterActivity.this, "Account created successfully", Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -56,6 +56,7 @@ public class LandlordManagePropertyManagersActivity extends AppCompatActivity im
         if(id == R.id.addManager){
             AlertDialog.Builder db = new AlertDialog.Builder(this);
             db.setTitle("Add Manager");
+            db.setIcon(R.drawable.ic_add_property_manager);
             db.setMessage("Please input username of property manager");
             final EditText tvManagerUsername = new EditText(this);
             tvManagerUsername.setInputType(InputType.TYPE_CLASS_TEXT);
@@ -88,7 +89,7 @@ public class LandlordManagePropertyManagersActivity extends AppCompatActivity im
 
     @Override
     public void processFinish(ArrayList<String> managerName) {
-        ArrayAdapter<String> managerAdapter = new ArrayAdapter<String>(
+        ArrayAdapter<String> managerAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
                 managerName);

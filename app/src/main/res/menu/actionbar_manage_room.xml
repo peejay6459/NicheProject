@@ -2,7 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:Niche="http://schemas.android.com/apk/res-auto">
 
-
+    <item
+        android:icon="@drawable/ic_add_property_manager"
+        Niche:showAsAction="ifRoom"
+        android:id="@+id/addManager"
+        android:title="Any"/>
     <item
         android:icon="@drawable/ic_add_room"
         Niche:showAsAction="ifRoom"

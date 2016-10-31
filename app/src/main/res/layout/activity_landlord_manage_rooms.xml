@@ -3,6 +3,19 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:text="Manager Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/propertyManagerName"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textStyle="normal|bold"
+        android:fontFamily="sans-serif-smallcaps"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:background="@android:color/darker_gray" />
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

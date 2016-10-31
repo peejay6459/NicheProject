@@ -18,12 +18,14 @@ import java.net.URLEncoder;
  */
 
 public class UpdatePropertyManagerInformation extends AsyncTask<String, Void, Void> {
-    PropertyManagerPersonalInformationActivity pmpi;
-    String propertyManagerID;
+    private PropertyManagerPersonalInformationActivity pmpi;
+    private String propertyManagerID;
+    private String username;
 
-    public UpdatePropertyManagerInformation(PropertyManagerPersonalInformationActivity pmpi, String propertyManagerID){
+    public UpdatePropertyManagerInformation(PropertyManagerPersonalInformationActivity pmpi, String propertyManagerID, String username){
         this.pmpi = pmpi;
         this.propertyManagerID = propertyManagerID;
+        this.username = username;
     }
     @Override
     protected Void doInBackground(String... params) {
@@ -32,12 +34,14 @@ public class UpdatePropertyManagerInformation extends AsyncTask<String, Void, Vo
             URLConnection con = url.openConnection();
             String passPropertyManagerID = URLEncoder.encode("propertyManagerID", "UTF-8");
             passPropertyManagerID += "=" + URLEncoder.encode(propertyManagerID, "UTF-8");
+            String passUsername = URLEncoder.encode("username", "UTF-8");
+            passUsername += "=" + URLEncoder.encode(username, "UTF-8");
             String alterPropertyManager = URLEncoder.encode("propertyManagerObject", "UTF-8");
             alterPropertyManager += "=" + URLEncoder.encode(pmpi.getLandlordJsonObject(), "UTF-8");
 
             con.setDoOutput(true);
             OutputStreamWriter os = new OutputStreamWriter(con.getOutputStream());
-            os.write(passPropertyManagerID + "&" + alterPropertyManager);
+            os.write(passPropertyManagerID + "&" + alterPropertyManager + "&" + passUsername);
             os.flush();
             con.getInputStream();
 

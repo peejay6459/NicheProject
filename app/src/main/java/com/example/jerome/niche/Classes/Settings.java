@@ -32,6 +32,7 @@ public interface Settings {
     String URL_ADDRESS_UPDATE_PROPERTY_MANAGER_INFORMATION = "http://kappatid.co.nf/updatePropertyManagerInfo.php";
     String URL_ADDRESS_VALIDATE_PROPERTY_MANAGER_LIST = "http://kappatid.co.nf/validatePropertyManagerList.php";
     String URL_ADDRESS_LOAD_PROPERTY_MANAGER_LIST = "http://kappatid.co.nf/loadPropertyManagerList.php";
-    String URL_ADDRESS_PROPERTY_MANAGER_LOAD_ROOM = "http://kappatid.co.nf/propertyManagerLoadRoom.php";
+    String URL_ADDRESS_UPDATE_ASSIGNED_PROPERTY_MANAGER = "http://kappatid.co.nf/updateAssignedPropertyManager.php";
+    String URL_ADDRESS_LOAD_ROOM_ASSIGNED_MANAGER = "http://kappatid.co.nf/loadRoomAssignedManager.php";
 
 }
