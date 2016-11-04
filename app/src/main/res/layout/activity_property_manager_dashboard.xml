@@ -59,28 +59,20 @@
                         android:orientation="vertical">
 
                         <Button
-                            android:text="Personal Information"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:id="@+id/btnPropertyManagerPersonalInformation"
-                            android:onClick="btnPropertyManagerPersonalInformation" />
+                            android:background="@drawable/profile"
+                            android:layout_marginTop="5dp" />
 
                         <Button
-                            android:text="Manage Rooms"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:id="@+id/btnPropertyManagerManageRooms"
-                            android:onClick="btnPropertyManagerManageRooms" />
+                            android:background="@drawable/bed1"/>
 
-                        <Button
-                            android:text="Review Tenants"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:id="@+id/btnPropertyManagerReviewTenants"
-                            android:onClick="btnPropertyManagerReviewTenants" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -93,7 +85,7 @@
                             android:text='"Saved for future release"'
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:id="@+id/textView8"
+                            android:id="@+id/tvFutureRelease"
                             android:gravity="center"
                             android:textSize="24sp"
                             android:textStyle="normal|bold" />

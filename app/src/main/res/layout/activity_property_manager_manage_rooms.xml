@@ -4,7 +4,7 @@
     android:id="@+id/activity_property_manager_manage_rooms"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jerome.niche.activities.PropertyManagerManageRoomsActivity">
+    tools:context="com.kappatid.jerome.niche.activities.PropertyManagerManageRoomsActivity">
 
     <ListView
         android:layout_width="match_parent"

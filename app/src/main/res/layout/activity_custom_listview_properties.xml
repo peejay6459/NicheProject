@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@android:color/holo_blue_bright">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="72dp"
+        android:background="@color/colorAccent">
 
         <ImageView
             app:srcCompat="@drawable/property"
             android:id="@+id/testImage"
             android:layout_width="100dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="5dp" />
+            android:layout_height="match_parent"
+            android:layout_weight="0.03" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -30,9 +30,12 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/address1"
                 android:layout_weight="1"
-                android:layout_marginTop="15dp"
-                android:textSize="14sp"
-                android:layout_marginLeft="5dp" />
+                android:layout_marginTop="5dp"
+                android:textSize="16sp"
+                android:layout_marginLeft="5dp"
+                android:textColor="@android:color/black"
+                android:textStyle="normal|bold"
+                android:fontFamily="serif-monospace" />
 
             <TextView
                 android:text="Address2"
@@ -42,7 +45,10 @@
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
                 android:textSize="14sp"
-                android:layout_marginLeft="5dp" />
+                android:layout_marginLeft="5dp"
+                android:textColor="@android:color/black"
+                android:textStyle="normal|bold"
+                android:fontFamily="serif-monospace" />
         </LinearLayout>
 
     </LinearLayout>
@@ -50,7 +56,6 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@android:color/black"
-        android:layout_marginTop="10dp" />
+        android:background="@android:color/black" />
 
 </LinearLayout>

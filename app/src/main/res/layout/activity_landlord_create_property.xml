@@ -75,33 +75,6 @@
                 android:textColor="@android:color/darker_gray"
                 android:textSize="18sp" />
 
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@android:color/black"/>
-            <TextView
-                android:text="Property Manager"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView1"
-                android:textSize="18sp"
-                android:textColor="@android:color/background_dark"
-                android:layout_marginLeft="7dp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@android:color/black"/>
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/spinPropertyManager"
-                android:entries="@array/property_managers"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp" />
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
@@ -112,10 +85,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnAddProperty"
-                android:textColor="@android:color/background_light"
+                android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="normal|bold"
-                android:background="?attr/colorPrimary"
+                android:background="@drawable/my_bg_button"
                 android:layout_marginTop="5dp" />
 
         </LinearLayout>

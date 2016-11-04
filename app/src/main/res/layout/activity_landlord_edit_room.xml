@@ -421,6 +421,16 @@
 
                 </RadioGroup>
             </LinearLayout>
+
+            <Button
+                android:text="Offer Room"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnOfferRoom"
+                android:background="@drawable/my_bg_button"
+                android:textSize="24sp"
+                android:textStyle="normal|bold"
+                android:textColor="@android:color/black" />
         </LinearLayout>
     </ScrollView>
 

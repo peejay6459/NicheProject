@@ -59,25 +59,20 @@
                         android:orientation="vertical">
 
                         <Button
-                            android:text="Personal Information"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:id="@+id/btnTenantPersonalInformation" />
+                            android:id="@+id/btnTenantPersonalInformation"
+                            android:background="@drawable/profile"
+                            android:layout_marginTop="5dp" />
 
                         <Button
-                            android:text="Rooms Offered"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:id="@+id/btnTenantRoomsOffered" />
+                            android:id="@+id/btnTenantRoomsOffered"
+                            android:background="@drawable/bed"/>
 
-                        <Button
-                            android:text="Payment History"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:id="@+id/btnTenantPaymentHistory" />
                     </LinearLayout>
 
                     <LinearLayout

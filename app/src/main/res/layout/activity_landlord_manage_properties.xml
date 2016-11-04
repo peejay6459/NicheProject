@@ -4,7 +4,7 @@
     android:id="@+id/activity_landlord_manage_properties"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jerome.niche.activities.LandlordManagePropertiesActivity">
+    tools:context="com.kappatid.jerome.niche.activities.LandlordManagePropertiesActivity">
 
     <ListView
         android:layout_width="match_parent"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.jerome.niche">
+    package="com.kappatid.jerome.niche">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
@@ -13,123 +13,120 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".activities.MainActivity">
+        <activity android:name="com.kappatid.jerome.niche.activities.SplashScreenActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name="com.kappatid.jerome.niche.activities.MainActivity">
+
 
         </activity>
-        <activity android:name=".activities.RegisterActivity" />
-        <activity android:name=".activities.TenantDashboardActivity">
+        <activity android:name="com.kappatid.jerome.niche.activities.RegisterActivity" />
+        <activity android:name="com.kappatid.jerome.niche.activities.TenantDashboardActivity">
 
         </activity>
         <activity
-            android:name=".activities.TenantPersonalInformationActivity"
-            android:parentActivityName=".activities.TenantDashboardActivity">
+            android:name="com.kappatid.jerome.niche.activities.TenantPersonalInformationActivity"
+            android:parentActivityName="com.kappatid.jerome.niche.activities.TenantDashboardActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.TenantDashboardActivity" />
-        </activity>
-        <activity android:name=".activities.TenantRegisterActivity" />
-        <activity
-            android:name=".activities.TenantRoomsOfferedActivity"
-            android:parentActivityName=".activities.TenantDashboardActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.TenantDashboardActivity" />
+                android:value="com.kappatid.jerome.niche.activities.TenantDashboardActivity" />
         </activity>
         <activity
-            android:name=".activities.TenantPaymentHistoryActivity"
-            android:parentActivityName=".activities.TenantDashboardActivity">
+            android:name="com.kappatid.jerome.niche.activities.TenantRoomsOfferedActivity"
+            android:parentActivityName="com.kappatid.jerome.niche.activities.TenantDashboardActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.TenantDashboardActivity" />
+                android:value="com.kappatid.jerome.niche.activities.TenantDashboardActivity" />
         </activity>
 
         <!-- Landlord Parent Activity -->
-        <activity android:name=".activities.LandlordDashboardActivity" />
+        <activity android:name="com.kappatid.jerome.niche.activities.LandlordDashboardActivity" />
 
         <!-- Landlord Child Activities -->
         <activity
-            android:name=".activities.LandlordPersonalInformationActivity"
-            android:parentActivityName=".activities.LandlordDashboardActivity">
+            android:name="com.kappatid.jerome.niche.activities.LandlordPersonalInformationActivity"
+            android:parentActivityName="com.kappatid.jerome.niche.activities.LandlordDashboardActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.LandlordDashboardActivity" />
+                android:value="com.kappatid.jerome.niche.activities.LandlordDashboardActivity" />
         </activity>
         <activity
-            android:name=".activities.LandlordManagePropertyManagersActivity"
-            android:parentActivityName=".activities.LandlordDashboardActivity">
+            android:name="com.kappatid.jerome.niche.activities.LandlordManagePropertyManagersActivity"
+            android:parentActivityName="com.kappatid.jerome.niche.activities.LandlordDashboardActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.LandlordDashboardActivity" />
+                android:value="com.kappatid.jerome.niche.activities.LandlordDashboardActivity" />
         </activity>
         <activity
-            android:name=".activities.LandlordManagePropertiesActivity"
-            android:parentActivityName=".activities.LandlordDashboardActivity">
+            android:name="com.kappatid.jerome.niche.activities.LandlordManagePropertiesActivity"
+            android:parentActivityName="com.kappatid.jerome.niche.activities.LandlordDashboardActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.LandlordDashboardActivity" />
+                android:value="com.kappatid.jerome.niche.activities.LandlordDashboardActivity" />
         </activity>
 
         <!-- PropertyManager Dashboard Parent Activity -->
-        <activity android:name=".activities.PropertyManagerDashboardActivity" />
+        <activity android:name="com.kappatid.jerome.niche.activities.PropertyManagerDashboardActivity" />
 
         <!-- PropertyManager Personal Information Child Activity -->
         <activity
-            android:name=".activities.PropertyManagerPersonalInformationActivity"
-            android:parentActivityName=".activities.PropertyManagerDashboardActivity">
+            android:name="com.kappatid.jerome.niche.activities.PropertyManagerPersonalInformationActivity"
+            android:parentActivityName="com.kappatid.jerome.niche.activities.PropertyManagerDashboardActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.PropertyManagerDashboardActivity" />
+                android:value="com.kappatid.jerome.niche.activities.PropertyManagerDashboardActivity" />
         </activity>
         <activity
-            android:name=".activities.PropertyManagerManageRoomsActivity"
-            android:parentActivityName=".activities.PropertyManagerDashboardActivity">
+            android:name="com.kappatid.jerome.niche.activities.PropertyManagerManageRoomsActivity"
+            android:parentActivityName="com.kappatid.jerome.niche.activities.PropertyManagerDashboardActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.PropertyManagerDashboardActivity" />
+                android:value="com.kappatid.jerome.niche.activities.PropertyManagerDashboardActivity" />
         </activity>
-        <activity
-            android:name=".activities.PropertyManagerReviewTenantsActivity"
-            android:parentActivityName=".activities.PropertyManagerDashboardActivity">
+        <activity android:name="com.kappatid.jerome.niche.activities.LandlordCreatePropertyActivity"
+            android:parentActivityName="com.kappatid.jerome.niche.activities.LandlordManagePropertiesActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.PropertyManagerDashboardActivity" />
-        </activity>
-        <activity android:name=".activities.LandlordCreatePropertyActivity"
-            android:parentActivityName=".activities.LandlordManagePropertiesActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.LandlordManagePropertiesActivity" />
+                android:value="com.kappatid.jerome.niche.activities.LandlordManagePropertiesActivity" />
         </activity>
 
-        <activity android:name=".activities.LandlordManageRoomsActivity"
-            android:parentActivityName=".activities.LandlordManagePropertiesActivity">
+        <activity android:name="com.kappatid.jerome.niche.activities.LandlordManageRoomsActivity"
+            android:parentActivityName="com.kappatid.jerome.niche.activities.LandlordManagePropertiesActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.LandlordManagePropertiesActivity" />
+                android:value="com.kappatid.jerome.niche.activities.LandlordManagePropertiesActivity" />
         </activity>
-        <activity android:name=".activities.LandlordEditPropertyActivity"
-            android:parentActivityName=".activities.LandlordManageRoomsActivity">
+        <activity android:name="com.kappatid.jerome.niche.activities.LandlordEditPropertyActivity"
+            android:parentActivityName="com.kappatid.jerome.niche.activities.LandlordManageRoomsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.LandlordManagePropertiesActivity" />
+                android:value="com.kappatid.jerome.niche.activities.LandlordManagePropertiesActivity" />
         </activity>
-        <activity android:name=".activities.LandlordCreateRoomActivity"
-            android:parentActivityName=".activities.LandlordManageRoomsActivity">
+        <activity android:name="com.kappatid.jerome.niche.activities.LandlordCreateRoomActivity"
+            android:parentActivityName="com.kappatid.jerome.niche.activities.LandlordManageRoomsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.LandlordManagePropertiesActivity" />
+                android:value="com.kappatid.jerome.niche.activities.LandlordManagePropertiesActivity" />
 
         </activity>
-        <activity android:name=".activities.LandlordEditRoomActivity"
-            android:parentActivityName=".activities.LandlordManageRoomsActivity">
+        <activity android:name="com.kappatid.jerome.niche.activities.LandlordEditRoomActivity"
+            android:parentActivityName="com.kappatid.jerome.niche.activities.LandlordManageRoomsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.LandlordManageRoomsActivity" />
+                android:value="com.kappatid.jerome.niche.activities.LandlordManageRoomsActivity" />
+        </activity>
+
+        <activity android:name="com.kappatid.jerome.niche.activities.TenantRoomsOfferedInformationActivity"
+            android:parentActivityName="com.kappatid.jerome.niche.activities.TenantRoomsOfferedActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.kappatid.jerome.niche.activities.TenantRoomsOfferedActivity" />
         </activity>
 
     </application>
